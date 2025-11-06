@@ -6,7 +6,7 @@ const MenuSlider: React.FC = () => {
   const slidesData = [
     { id: 'bruschetta', title: 'Bruschetta Bar', description: 'Perfect at drinks receptions. Pair with our Pink Paloma Bar.', image: '/hero-table.jpg' },
     { id: 'yakitori', title: 'Yakitori Grill', description: 'Japanese street food skewers grilled over charcoal.', image: '/NEW.png' },
-    { id: 'about', title: 'About Kalm Kitchen', description: 'Learn our story, mission, and what makes our services unique.', image: '/About.png' },
+    { id: 'shrimp', title: 'Chili-Lime Shrimp Skewers', description: 'Petite, savory meat and vegetable skewers grilled over an open flame with guest\'s choice of: harissa chicken, marinated skirt steak, chili lime sea bass, or smoked wild mushrooms; served with salsa verde and creamy Romesco dipping sauces.', image: '/About.png' },
   ];
 
   const handleMenuItemClick = (targetId: string) => {
