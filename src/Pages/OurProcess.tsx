@@ -1,16 +1,36 @@
 import Header from "@/Components/Header";
 import Hero from "@/Components/Hero";
 import Footer from "@/Components/Footer";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/Components/UI/button";
 import Timeline from "@/Components/Timeline";
 import { useFadeIn } from "@/Hooks/useFadeIn";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/Components/UI/accordion";
 import { ChevronRight } from "lucide-react";
 import ScrollIndicator from "@/Components/ScrollIndicator";
+import CTAPanel from "@/Components/CTAPanel";
+import includedImage from "/Public/service-culinary.jpg";
+import budgetImage from "/Public/IMG_6473-scaled.jpeg";
 
 const OurProcess = () => {
   const [ref1, isVisible1] = useFadeIn<HTMLDivElement>();
   const [ref2, isVisible2] = useFadeIn<HTMLDivElement>();
+
+  const [isProcessVisible, setIsProcessVisible] = useState(false);
+  const processRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (processRef.current) {
+        const rect = processRef.current.getBoundingClientRect();
+        setIsProcessVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -18,76 +38,66 @@ const OurProcess = () => {
       <Hero 
         title="Seamless From First Hello"
         subtitle="from inquiry to event day"
-        cta1={<Button size="lg" className="mt-8">Start Your Proposal</Button>}
+        cta1={<Button size="lg" className="mt-8">START YOUR PROPOSAL</Button>}
       />
       <ScrollIndicator />
 
-      {/* Timeline Section */}
-      <div className="py-16 bg-light-cream">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-4" style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Process</h2>
-          <p className="text-lg text-muted-foreground text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>Your celebration's delicious food & drink planning journey</p>
-          <p className="text-md text-muted-foreground text-center italic mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>Tu viaje hacia una fiesta inolvidable</p>
+      <section className={`transition-colors duration-500 ${isProcessVisible ? 'bg-reserved-burgundy w-screen relative left-[50%] right-[50%] -mx-[50vw]' : 'bg-light-cream'}`}>
+        <div className="container mx-auto px-8 py-16" ref={processRef}>
+          <h2 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-4 transition-colors duration-500 ${isProcessVisible ? 'text-brass' : ''}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Process</h2>
+          <p className={`text-lg text-center transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Your celebration's delicious food & drink planning journey</p>
+          <p className={`text-md text-center italic mb-8 transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Tu viaje hacia una fiesta inolvidable</p>
           <div className="w-16 h-px bg-brass mx-auto mb-16"></div>
-          <Timeline />
+          <Timeline isProcessVisible={isProcessVisible} />
         </div>
-      </div>
+      </section>
 
       {/* What's Included Section */}
-      <div ref={ref1} className={`py-16 bg-light-cream transition-opacity duration-1000 ease-in-out ${isVisible1 ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="container mx-auto px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-light text-foreground mb-6" style={{ fontFamily: 'Libre Baskerville, serif' }}>What’s Included</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-primary mr-4">✓</span>
-                  <p className="text-lg text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Custom menu design tailored to your event</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-4">✓</span>
-                  <p className="text-lg text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Dietary and allergen accommodation planning</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-4">✓</span>
-                  <p className="text-lg text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Professional culinary and service staffing</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-4">✓</span>
-                  <p className="text-lg text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Complete setup and breakdown of culinary areas</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-4">✓</span>
-                  <p className="text-lg text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>Regular coordination touchpoints to ensure alignment</p>
-                </li>
-              </ul>
-            </div>
-            <div className="border-l border-brass pl-12">
-              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop" alt="What’s Included" className="rounded-lg shadow-lg w-full transition-transform duration-300 ease-in-out hover:scale-105" />
-            </div>
-          </div>
+      <section ref={ref1} className={`flex flex-col md:flex-row items-center justify-center gap-10 py-20 px-6 bg-light-cream transition-opacity duration-1000 ease-in-out ${isVisible1 ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Left: Text */}
+        <div className="md:w-1/2">
+          <h2 className="text-3xl font-semibold mb-6 text-[#532f36]">What’s Included</h2>
+          <ul className="space-y-3 text-lg text-gray-700">
+            <li>✓ Custom menu design tailored to your event</li>
+            <li>✓ Dietary and allergen accommodation planning</li>
+            <li>✓ Professional culinary and service staffing</li>
+            <li>✓ Complete setup and breakdown of culinary areas</li>
+            <li>✓ Regular coordination touchpoints to ensure alignment</li>
+          </ul>
         </div>
-      </div>
+
+        {/* Right: Image */}
+        <div className="md:w-1/2">
+          <img
+            src={includedImage}
+            alt="What’s Included"
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+        </div>
+      </section>
 
       {/* Budget & Minimums Section */}
-      <div ref={ref2} className={`py-16 bg-light-cream transition-opacity duration-1000 ease-in-out ${isVisible2 ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="container mx-auto px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="border-r border-brass pr-12">
-              <img src="https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?w=600&h=400&fit=crop" alt="Budget & Minimums" className="rounded-lg shadow-lg w-full transition-transform duration-300 ease-in-out hover:scale-105" />
-            </div>
-            <div>
-              <h3 className="text-3xl font-light text-foreground mb-6" style={{ fontFamily: 'Libre Baskerville, serif' }}>Budget & Minimums</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Our pricing is transparent and tailored to your event’s scale and complexity. We work with you to create a memorable experience that respects your budget. Minimums may apply depending on the event type and guest count.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mt-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                To optimize your budget, consider a buffet-style service or focusing on a curated selection of signature dishes. We are happy to provide guidance on how to achieve your vision effectively.
-              </p>
-            </div>
-          </div>
+      <section ref={ref2} className={`flex flex-col md:flex-row-reverse items-center justify-center gap-10 py-20 px-6 bg-[#f9f5f3] transition-opacity duration-1000 ease-in-out ${isVisible2 ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Right: Text */}
+        <div className="md:w-1/2">
+          <h2 className="text-3xl font-semibold mb-6 text-[#532f36]">Budget & Minimums</h2>
+          <p className="text-lg text-gray-700 mb-4">
+            Our pricing is transparent and tailored to your event’s scale and complexity. We work with you to create a memorable experience that respects your budget. Minimums may apply depending on the event type and guest count.
+          </p>
+          <p className="text-lg text-gray-700">
+            To optimize your budget, consider a buffet-style service or focusing on a curated selection of signature dishes. We are happy to provide guidance on how to achieve your vision effectively.
+          </p>
         </div>
-      </div>
+
+        {/* Left: Image */}
+        <div className="md:w-1/2">
+          <img
+            src={budgetImage}
+            alt="Budget & Minimums"
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
+        </div>
+      </section>
 
       {/* Process FAQ Section */}
       <div className="py-16 bg-light-cream">
@@ -152,20 +162,14 @@ const OurProcess = () => {
         </div>
       </div>
 
-      {/* CTA Band */}
-      <div className="py-16 bg-reserved-burgundy text-center">
-        <div className="container mx-auto px-8">
-          <h2 className="text-3xl md:text-4xl font-light text-white mb-8" style={{ fontFamily: 'Libre Baskerville, serif' }}>Ready to Get Started?</h2>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <Button size="lg" className="bg-white text-reserved-burgundy hover:bg-stone hover:text-reserved-burgundy font-semibold px-8 py-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Request a Proposal
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-reserved-burgundy font-semibold px-8 py-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Book a Discovery Call
-            </Button>
-          </div>
-        </div>
-      </div>
+      <CTAPanel
+        title="Ready to Get Started?"
+        primaryButtonText="Request a Proposal"
+        primaryButtonLink="/contact"
+        secondaryButtonText="Book a Discovery Call"
+        secondaryButtonLink="/contact"
+        imageUrl={'/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg'}
+      />
 
       <Footer />
     </div>

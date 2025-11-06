@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,6 +21,8 @@ const Header = () => {
     window.scrollTo(0, 0);
     setIsScrolled(false);
     setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsMobileServicesOpen(false);
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,9 +46,19 @@ const Header = () => {
           <div className="flex-1 flex justify-start">
             {/* Left navigation */}
             <div className="hidden md:flex items-center space-x-8 nav-left">
-              <a href="#services" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
-                SERVICES
-              </a>
+              <div className="relative" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
+                <a href="#services" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'} flex items-center`}>
+                  SERVICES <ChevronDown size={16} className="ml-1" />
+                </a>
+                {isServicesOpen && (
+                  <div className="absolute top-full left-0 bg-background shadow-soft rounded-md py-2 min-w-[200px] z-50">
+                    <Link to="/catering" className="block px-4 py-2 text-sm hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass">Weddings</Link>
+                    <Link to="/corporate" className="block px-4 py-2 text-sm hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass">Corporate</Link>
+                    <Link to="/events" className="block px-4 py-2 text-sm hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass">Intimate Gatherings</Link>
+                    <Link to="/special-occasions" className="block px-4 py-2 text-sm hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass">Special Occasions</Link>
+                  </div>
+                )}
+              </div>
               <Link to="/about" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>
                 ABOUT
               </Link>
@@ -58,7 +72,7 @@ const Header = () => {
           <div className="flex-shrink-0 logo-center">
             <Link to="/">
               <img
-                src={isScrolled ? "/src/Design/01_Logo/PNG/SQUARE_TRANSPARENT_INK_NAVY.png" : "/src/Design/01_Logo/PNG/WIDE_ASPECTRATIO_NO_BACKGROUND_INK_NAVY.png"}
+                src={isScrolled ? "/LBM.F5/SQUARE_TRANSPARENT_INK_NAVY.png" : "/LBM.F5/WIDE_ASPECTRATIO_NO_BACKGROUND_INK_NAVY.png"}
                 alt="La Bella Mesa"
                 className={`transition-all duration-300 ease-in-out hover:opacity-80 ${
                   isScrolled
@@ -101,9 +115,17 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background shadow-soft">
           <div className="container mx-auto px-8 py-4 flex flex-col space-y-4">
-            <a href="#services" className="text-sm font-medium text-foreground hover:text-brass">
-              SERVICES
-            </a>
+            <button onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} className="text-sm font-medium text-foreground hover:text-brass flex items-center justify-between">
+              SERVICES <ChevronDown size={16} className={`ml-1 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {isMobileServicesOpen && (
+              <div className="ml-4 space-y-2">
+                <Link to="/catering" className="text-sm font-medium text-foreground hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass block">Weddings</Link>
+                <Link to="/corporate" className="text-sm font-medium text-foreground hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass block">Corporate</Link>
+                <Link to="/events" className="text-sm font-medium text-foreground hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass block">Intimate Gatherings</Link>
+                <Link to="/special-occasions" className="text-sm font-medium text-foreground hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass block">Special Occasions</Link>
+              </div>
+            )}
             <Link to="/about" className="text-sm font-medium text-foreground hover:text-brass">
               ABOUT
             </Link>

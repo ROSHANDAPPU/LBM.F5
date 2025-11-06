@@ -1,11 +1,17 @@
+import { useFadeInUp } from '@/Hooks/useScrollAnimation';
+
 const Footer = () => {
+  const { elementRef, isVisible } = useFadeInUp();
+
   return (
-    <footer className="py-16 px-6 sm:px-8 lg:px-12 bg-background border-t border-border/50">
+    <footer 
+      ref={elementRef}
+      className={`py-16 px-6 sm:px-8 lg:px-12 bg-background border-t border-border/50 animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div className="space-y-3">
             <img
-              src="/src/Design/01_Logo/PNG/WIDE_ASPECTRATIO_BLACK.png"
+              src="/LBM.F5/WIDE_ASPECTRATIO_BLACK.png"
               alt="La Bella Mesa Logo"
               className="h-12 w-auto"
             />

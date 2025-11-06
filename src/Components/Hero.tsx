@@ -1,4 +1,5 @@
 import { Button } from "./UI/button";
+import heroImage from "@/assets/NEW.png";
 
 interface HeroProps {
   title: React.ReactNode;
@@ -27,7 +28,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
              maxWidth: '85%',
              width: '100%',
              height: '85%',
-             backgroundImage: `url('/src/assets/NEW.png')`,
+             backgroundImage: `url(${heroImage})`,
              backgroundSize: 'cover',
              backgroundPosition: 'center',
              backgroundRepeat: 'no-repeat',

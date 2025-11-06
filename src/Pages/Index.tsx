@@ -10,10 +10,16 @@ import Footer from "@/Components/Footer";
 import SocialProof from "@/Components/SocialProof";
 import Testimonials from "@/Components/Testimonials";
 import { Button } from "@/Components/UI/button";
+import { Link } from "react-router-dom";
 import ScrollIndicator from '@/Components/ScrollIndicator';
 import StarRating from '@/Components/UI/StarRating';
 
+
 // Custom hook for alternating direction autoplay
+
+
+
+
 
 const Index = () => {
 
@@ -119,33 +125,32 @@ const Index = () => {
         <div className="w-24 h-px bg-accent"></div>
       </div>
 
-      {/* CTA Band */}
-      <div className="cta-band py-16 w-full bg-background text-foreground group hover:bg-primary transition-colors duration-500">
-        <div className="container mx-auto px-8">
-          <div className="max-w-2xl mx-auto bg-card rounded-3xl p-12 shadow-lg border border-border/50 group-hover:border-primary/20 transition-colors duration-500">
-            <div className="text-center">
-              <h3 className="mb-8 text-foreground group-hover:text-white transition-colors duration-500" style={{ fontFamily: 'Libre Baskerville, serif' }}>
-                Ready to Begin?
-              </h3>
-              <div className="flex justify-center space-x-4">
-                <Button
-                  size="lg"
-                  className="bg-primary text-white hover:bg-white hover:text-primary hover:border-primary border border-transparent uppercase tracking-wide transition-all duration-500"
-                >
-                  Request a Proposal
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent text-primary border-primary hover:bg-primary hover:text-white uppercase tracking-wide transition-all duration-500"
-                >
-                  Book a Tasting
-                </Button>
-              </div>
-            </div>
+      <section
+        className="relative bg-fixed bg-center bg-cover bg-no-repeat text-white text-center py-28"
+        style={{ backgroundImage: `url(/hero-table.jpg)` }}
+      >
+        <div className="absolute inset-0 bg-black/45"></div>
+
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">Ready to Begin?</h2>
+          <p className="text-lg mb-8">Let's create something beautiful together</p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="/book-event"
+              className="bg-[#532f36] border border-[#532f36] text-white px-8 py-3 hover:bg-transparent hover:text-white transition-all"
+            >
+              REQUEST A PROPOSAL
+            </a>
+            <a
+              href="/book-event"
+              className="border border-white text-white px-8 py-3 hover:bg-white hover:text-[#532f36] transition-all"
+            >
+              BOOK A TASTING
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
       <Contact />
       <Footer />

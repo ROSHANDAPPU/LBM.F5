@@ -1,6 +1,13 @@
+import { useFadeInUp } from '@/Hooks/useScrollAnimation';
+
 const Ethos = () => {
+  const { elementRef, isVisible } = useFadeInUp();
+
   return (
-    <section className="ethos-section">
+    <section
+      ref={elementRef}
+      className={`ethos-section animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}
+    >
       <div className="ethos-text">
         <h3>Elevated culinary experiences and seamless hosting for discerning families and corporate teams.</h3>
         <p className="text-reserved-burgundy">

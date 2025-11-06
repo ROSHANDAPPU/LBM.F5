@@ -1,0 +1,120 @@
+/* Section container */
+.experience-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: #2b2323;
+  color: #fff;
+  position: relative;
+  padding: 2rem;
+}
+
+/* Grid for left/right columns */
+.experience-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  width: 90%;
+  max-width: 1400px;
+  align-items: center;
+}
+
+/* Left column styling */
+.experience-left h2 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.experience-left .learn-more {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.experience-left .learn-more:hover {
+  background: #fff;
+  color: #2b2323;
+}
+
+.experience-menu li {
+  list-style: none;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.experience-menu li span {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.experience-menu li:hover,
+.experience-menu li.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Right column */
+.experience-right {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  max-width: 70%;
+  background: rgba(0,0,0,0.4);
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .experience-content {
+    grid-template-columns: 1fr;
+  }
+  .experience-left {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .overlay {
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

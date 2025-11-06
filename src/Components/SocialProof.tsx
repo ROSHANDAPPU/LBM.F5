@@ -1,8 +1,14 @@
 import React from 'react';
+import { useFadeInUp } from '@/Hooks/useScrollAnimation';
 
 const SocialProof: React.FC = () => {
+  const { elementRef, isVisible } = useFadeInUp();
+
   return (
-    <div className="bg-background py-16">
+    <div
+      ref={elementRef}
+      className={`bg-background py-16 animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}
+    >
       <div className="container mx-auto">
         <h2 className="text-center text-3xl font-bold text-gray-800">Our Partners</h2>
         <div className="flex justify-center items-center mt-8 space-x-8">

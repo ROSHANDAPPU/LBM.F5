@@ -1,23 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/backup.LBM1/' : '/',
+export default defineConfig({
+  plugins: [react()],
+  base: "/LBM.F5/", // MUST match your repo name
   build: {
-    outDir: 'dist'
+    outDir: "dist",
   },
-  publicDir: 'Public',
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  publicDir: "Public",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+});

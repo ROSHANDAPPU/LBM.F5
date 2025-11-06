@@ -685,6 +685,26 @@ All colors MUST be HSL.
   .animate-stagger-reveal:nth-child(3) { transition-delay: 0.3s; }
   .animate-stagger-reveal:nth-child(4) { transition-delay: 0.4s; }
 
+  @keyframes pulse-border-burgundy {
+    0%, 100% {
+      box-shadow: 0 0 20px 10px rgba(91, 46, 52, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 30px 15px rgba(91, 46, 52, 0.7);
+    }
+  }
+
+  .gallery-image-flair {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem;
+    pointer-events: none;
+    animation: pulse-border-burgundy 4s infinite ease-in-out;
+  }
+
   .animate-rotate-in {
     opacity: 0;
     transform: rotate(-10deg) scale(0.9);
@@ -819,4 +839,121 @@ All colors MUST be HSL.
     height: 1px;
     width: 1px;
   }
+}
+
+.img-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.img-fade.loaded {
+  opacity: 1;
+}
+
+.img-hover {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.img-hover:hover {
+
+  transform: scale(1.05);
+
+  filter: brightness(1.1);
+
+}
+
+
+
+.menu-info {
+
+
+
+  text-align: center;        /* Center the content */
+
+
+
+  margin-top: 0rem;          /* Space from menu above */
+
+
+
+  margin-bottom: 2rem;       /* Space below the menu info */
+
+
+
+}
+
+
+
+.menu-download {
+
+
+
+  display: inline-block;
+
+
+
+  background-color: hsl(var(--accent));
+
+
+
+  color: hsl(var(--foreground));
+
+
+
+  font-family: 'Libre Baskerville', serif;
+
+
+
+  font-weight: bold;
+
+
+
+  padding: 0.6rem 1.2rem;
+
+
+
+  border-radius: 6px;
+
+
+
+  text-decoration: none;
+
+
+
+  margin-bottom: 0.5rem;
+
+
+
+  transition: background-color 0.3s ease;
+
+
+
+}
+
+
+
+
+
+
+
+.menu-download:hover {
+
+
+
+  background-color: hsl(42, 65%, 40%); /* Darker gold on hover */
+
+
+
+}
+
+
+
+.menu-note {
+
+  font-size: 0.9rem;
+
+  color: #555;
+
+  margin-top: 0.5rem;
+
 }

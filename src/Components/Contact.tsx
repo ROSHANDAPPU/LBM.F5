@@ -1,10 +1,15 @@
 import { Button } from "./UI/button";
 import { Input } from "./UI/input";
 import { Textarea } from "./UI/textarea";
+import { useFadeInUp } from '@/Hooks/useScrollAnimation';
 
 const Contact = () => {
+  const { elementRef, isVisible } = useFadeInUp();
+
   return (
-    <section className="py-32 px-6 sm:px-8 lg:px-12 bg-muted/30">
+    <section 
+      ref={elementRef}
+      className={`py-32 px-6 sm:px-8 lg:px-12 bg-muted/30 animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}>
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-16 space-y-6">

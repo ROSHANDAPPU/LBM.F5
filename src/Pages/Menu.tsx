@@ -7,6 +7,7 @@ import { Button } from "@/Components/UI/button";
 import ScrollIndicator from "@/Components/ScrollIndicator";
 import CTAPanel from "@/Components/CTAPanel";
 import SignatureItems from "@/Components/SignatureItems";
+import MenuSlider from "@/Components/MenuSlider";
 
 const Menu = () => {
   const [activeSection, setActiveSection] = useState('family-style');
@@ -41,8 +42,25 @@ const Menu = () => {
           </Button>
         }
       />
-      <ScrollIndicator />
-      <SignatureItems />
+
+      <div className="py-20 px-6 bg-background">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-[#36394C] mb-4 text-4xl sm:text-5xl font-light tracking-tight">Signature Items</h2>
+            <div className="w-[60px] h-[1px] bg-[#C4A46A] mx-auto" />
+          </div>
+          <MenuSlider />
+        </div>
+      </div>
+
+      <div className="py-20 px-6 bg-background">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-[#36394C] mb-4 text-4xl sm:text-5xl font-light tracking-tight">Explore Our Menus</h2>
+            <div className="w-[60px] h-[1px] bg-[#C4A46A] mx-auto" />
+          </div>
+        </div>
+      </div>
 
       {/* Menu Navigation */}
       <div className="py-8 px-6 bg-background">
@@ -659,12 +677,27 @@ const Menu = () => {
         </div>
       </div>
 
+      <div className="menu-info">
+        <a 
+          href="/menu.pdf" 
+          className="menu-download" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Download our menu (Download PDF)
+        </a>
+        <p className="menu-note">
+          Rentals, staffing, florals/coordination (if offered).
+        </p>
+      </div>
+
       <CTAPanel
         title="Wanna Try?"
         primaryButtonText="Request a Proposal"
         primaryButtonLink="/contact"
         secondaryButtonText="View Our Work"
         secondaryButtonLink="/gallery"
+        imageUrl="/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg"
       />
       <Footer />
     </div>

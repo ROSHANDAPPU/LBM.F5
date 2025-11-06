@@ -93,6 +93,7 @@ export default {
         'muted-sage': '#98A989',
         'light-cream': '#EFE3D7',
         'stone': '#C9C3BA',
+        'creamy-white': '#F5F5DC',
         cream: "#F5F5DC",
         navy: "#36394C",
       },
@@ -118,10 +119,21 @@ export default {
             height: "0",
           },
         },
+        "pulse-border-burgundy": {
+          "0%, 100%": {
+            borderColor: "transparent",
+            transform: "scale(1)",
+          },
+          "50%": {
+            borderColor: "#5B2E34", // reserved-burgundy
+            transform: "scale(1.02)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-border-burgundy": "pulse-border-burgundy 1.5s ease-in-out infinite",
       },
     },
   },

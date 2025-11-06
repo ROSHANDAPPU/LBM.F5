@@ -2,7 +2,7 @@ import { Toaster } from "@/Components/UI/toaster";
 import { Toaster as Sonner } from "@/Components/UI/sonner";
 import { TooltipProvider } from "@/Components/UI/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Index from "./Pages/Index";
 import NotFound from "./Pages/NotFound";
 import Catering from "./Pages/Catering";
@@ -33,23 +33,21 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/catering" element={<Catering />} />
-          <Route path="/corporate" element={<Corporate />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/our-process" element={<OurProcess />} />
-          <Route path="/book-event" element={<BookEvent />} />
-          <Route path="/special-occasions" element={<SpecialOccasions />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/catering" element={<Catering />} />
+        <Route path="/corporate" element={<Corporate />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/our-process" element={<OurProcess />} />
+        <Route path="/book-event" element={<BookEvent />} />
+        <Route path="/special-occasions" element={<SpecialOccasions />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "@/Components/Header";
 import Hero from "@/Components/Hero";
 import Footer from "@/Components/Footer";
@@ -36,6 +36,40 @@ const About = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentMemberIndex, setCurrentMemberIndex] = useState(0);
 
+  const [isStoryVisible, setIsStoryVisible] = useState(false);
+  const [isValuesVisible, setIsValuesVisible] = useState(false);
+  const [isGalleryVisible, setIsGalleryVisible] = useState(false);
+  const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
+  const storyRef = useRef<HTMLDivElement>(null);
+  const valuesRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (storyRef.current) {
+        const rect = storyRef.current.getBoundingClientRect();
+        setIsStoryVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+      if (valuesRef.current) {
+        const rect = valuesRef.current.getBoundingClientRect();
+        setIsValuesVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+      if (galleryRef.current) {
+        const rect = galleryRef.current.getBoundingClientRect();
+        setIsGalleryVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+      if (testimonialsRef.current) {
+        const rect = testimonialsRef.current.getBoundingClientRect();
+        setIsTestimonialsVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const openLightbox = (index: number) => {
     setCurrentMemberIndex(index);
     setLightboxOpen(true);
@@ -51,78 +85,76 @@ const About = () => {
       />
       <ScrollIndicator />
 
-      {/* Our Story Section */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Story</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Our elegant dining setup showcasing effortless hospitality" className="rounded-lg shadow-lg w-full" />
-            </div>
-            <div>
-              <h3 className="text-3xl font-light text-foreground mb-6" style={{ fontFamily: 'Libre Baskerville, serif' }}>Effortless Elegance</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                At La Bella Mesa, we believe that true hospitality is found in the quiet moments—the perfectly timed service, the thoughtfully curated menu, the subtle attention to detail that creates an atmosphere of effortless elegance. Our chef-led approach combines culinary artistry with discreet, unobtrusive service, ensuring every gathering unfolds with grace and tranquility.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mt-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                From intimate dinners to grand celebrations, we craft experiences that allow you to focus on what matters most: the connections, the conversations, the memories being made. Quiet luxury, simply served.
-              </p>
-            </div>
-          </div>
-        </div>
+<section className={`transition-colors duration-500 ${isStoryVisible ? 'bg-reserved-burgundy w-screen relative left-[50%] right-[50%] -mx-[50vw]' : ''}`}>
+  <div className="container mx-auto px-8 py-16" ref={storyRef}>
+    <h2 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isStoryVisible ? 'text-white' : ''}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Story</h2>
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Our elegant dining setup showcasing effortless hospitality" className="rounded-lg shadow-lg w-full" />
       </div>
+      <div>
+        <h3 className={`text-3xl font-light mb-6 transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Effortless Elegance</h3>
+        <p className={`text-lg leading-relaxed transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          At La Bella Mesa, we believe that true hospitality is found in the quiet moments—the perfectly timed service, the thoughtfully curated menu, the subtle attention to detail that creates an atmosphere of effortless elegance. Our chef-led approach combines culinary artistry with discreet, unobtrusive service, ensuring every gathering unfolds with grace and tranquility.
+        </p>
+        <p className={`text-lg leading-relaxed mt-4 transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          From intimate dinners to grand celebrations, we craft experiences that allow you to focus on what matters most: the connections, the conversations, the memories being made. Quiet luxury, simply served.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      {/* Our Values Section */}
-      <div className="py-16">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Values</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <ul className="space-y-8">
-                <li className="flex items-start">
-                  <div className="brass-accent mr-6 mt-1">
-                    <div className="gold-flair w-2 h-2"></div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-light text-foreground mb-3" style={{ fontFamily: 'Libre Baskerville, serif' }}>Craft</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>Every dish tells a story of meticulous attention to detail, from seasonal ingredient selection to artistic presentation. Our craft is rooted in tradition yet embraces innovation.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="brass-accent mr-6 mt-1">
-                    <div className="gold-flair w-2 h-2"></div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-light text-foreground mb-3" style={{ fontFamily: 'Libre Baskerville, serif' }}>Calm Aesthetics</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>Our spaces are designed for tranquility—soft lighting, natural materials, and thoughtful arrangements that create an atmosphere of quiet sophistication and comfort.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="brass-accent mr-6 mt-1">
-                    <div className="gold-flair w-2 h-2"></div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-light text-foreground mb-3" style={{ fontFamily: 'Libre Baskerville, serif' }}>Hospitality</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>True hospitality is anticipating needs before they're expressed, creating seamless experiences that allow guests to focus on connection rather than coordination.</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="brass-accent mr-6 mt-1">
-                    <div className="gold-flair w-2 h-2"></div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-light text-foreground mb-3" style={{ fontFamily: 'Libre Baskerville, serif' }}>Reliability</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>From the first consultation to the final farewell, every promise is kept. Our reliability builds trust that becomes the foundation of lasting relationships.</p>
-                  </div>
-                </li>
-              </ul>
+<section className={`transition-colors duration-500 ${isValuesVisible ? 'bg-reserved-burgundy w-screen relative left-[50%] right-[50%] -mx-[50vw]' : ''}`}>
+  <div className="container mx-auto px-8 py-16" ref={valuesRef}>
+    <h2 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isValuesVisible ? 'text-white' : ''}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Values</h2>
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <ul className="space-y-8">
+          <li className="flex items-start">
+            <div className="brass-accent mr-6 mt-1">
+              <div className="gold-flair w-2 h-2"></div>
             </div>
             <div>
-              <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop" alt="Our commitment to craft, calm aesthetics, hospitality, and reliability" className="rounded-lg shadow-lg w-full" />
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Craft</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Every dish tells a story of meticulous attention to detail, from seasonal ingredient selection to artistic presentation. Our craft is rooted in tradition yet embraces innovation.</p>
             </div>
-          </div>
-        </div>
+          </li>
+          <li className="flex items-start">
+            <div className="brass-accent mr-6 mt-1">
+              <div className="gold-flair w-2 h-2"></div>
+            </div>
+            <div>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Calm Aesthetics</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Our spaces are designed for tranquility—soft lighting, natural materials, and thoughtful arrangements that create an atmosphere of quiet sophistication and comfort.</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <div className="brass-accent mr-6 mt-1">
+              <div className="gold-flair w-2 h-2"></div>
+            </div>
+            <div>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Hospitality</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>True hospitality is anticipating needs before they're expressed, creating seamless experiences that allow guests to focus on connection rather than coordination.</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <div className="brass-accent mr-6 mt-1">
+              <div className="gold-flair w-2 h-2"></div>
+            </div>
+            <div>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Reliability</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>From the first consultation to the final farewell, every promise is kept. Our reliability builds trust that becomes the foundation of lasting relationships.</p>
+            </div>
+          </li>
+        </ul>
       </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop" alt="Our commitment to craft, calm aesthetics, hospitality, and reliability" className="rounded-lg shadow-lg w-full" />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Team Section */}
       <div className="py-16" style={{ backgroundColor: 'hsl(var(--background-secondary))' }}>
@@ -170,10 +202,12 @@ const About = () => {
         }}
       />
 
-      <Testimonials />
-      <div className="bg-background py-16">
+      <section className={`transition-colors duration-500 ${isTestimonialsVisible ? 'bg-creamy-white' : 'bg-stone'}`} ref={testimonialsRef}>
+        <Testimonials />
+      </section>
+      <div className="py-16 bg-stone">
         <div className="container mx-auto">
-          <h2 className="text-center text-3xl font-bold text-gray-800">Our Partners</h2>
+          <h2 className="text-center text-3xl font-bold text-ink-navy">Our Partners</h2>
           <div className="flex justify-center items-center mt-8 space-x-8">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
             <div className="h-12 w-px bg-brass"></div>
@@ -187,16 +221,19 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-4xl md:text-5xl font-light tracking-tight text-center mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h2>
-        <GalleryGrid />
-      </div>
+<section className={`transition-colors duration-500 ${isGalleryVisible ? 'bg-reserved-burgundy w-screen relative left-[50%] right-[50%] -mx-[50vw]' : ''}`}>
+  <div className="container mx-auto px-4 py-8" ref={galleryRef}>
+    <h2 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isGalleryVisible ? 'text-white' : ''}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h2>
+    <GalleryGrid />
+  </div>
+</section>
       <CTAPanel
         title="Inspired by our story?"
         primaryButtonText="Request a Proposal"
         primaryButtonLink="/contact"
         secondaryButtonText="View Our Work"
         secondaryButtonLink="/gallery"
+        imageUrl={'/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg'}
       />
       <Footer />
     </div>

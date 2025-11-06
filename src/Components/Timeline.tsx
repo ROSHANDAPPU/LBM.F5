@@ -37,7 +37,11 @@ const timelineData = [
   }
 ];
 
-const Timeline = () => {
+interface TimelineProps {
+  isProcessVisible: boolean;
+}
+
+const Timeline: React.FC<TimelineProps> = ({ isProcessVisible }) => {
   return (
     <div className="relative">
       <div className="absolute left-1/2 h-full border-l-2 border-gray-300"></div>
@@ -46,9 +50,9 @@ const Timeline = () => {
           <div className="w-1/2 pr-8 text-right">
             {index % 2 === 0 && (
               <div>
-                <h3 className="text-2xl font-light text-foreground mb-2" style={{ fontFamily: 'Libre Baskerville, serif' }}>{item.title}</h3>
-                <p className="text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>{item.description}</p>
-                <p className="text-sm text-muted-foreground mt-2" style={{ fontFamily: 'Montserrat, sans-serif' }}><em>{item.deliverable}</em></p>
+                <h3 className={`text-2xl font-light mb-2 transition-colors duration-500 ${isProcessVisible ? 'text-brass' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>{item.title}</h3>
+                <p className={`transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{item.description}</p>
+                <p className={`text-sm mt-2 transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}><em>{item.deliverable}</em></p>
               </div>
             )}
           </div>
@@ -58,9 +62,9 @@ const Timeline = () => {
           <div className="w-1/2 pl-8">
             {index % 2 !== 0 && (
               <div>
-                <h3 className="text-2xl font-light text-foreground mb-2" style={{ fontFamily: 'Libre Baskerville, serif' }}>{item.title}</h3>
-                <p className="text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>{item.description}</p>
-                <p className="text-sm text-muted-foreground mt-2" style={{ fontFamily: 'Montserrat, sans-serif' }}><em>{item.deliverable}</em></p>
+                <h3 className={`text-2xl font-light mb-2 transition-colors duration-500 ${isProcessVisible ? 'text-brass' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>{item.title}</h3>
+                <p className={`transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{item.description}</p>
+                <p className={`text-sm mt-2 transition-colors duration-500 ${isProcessVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}><em>{item.deliverable}</em></p>
               </div>
             )}
           </div>

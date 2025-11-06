@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import culinaryArtistryImage from "/Public/service-culinary.jpg";
 
 const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=900&fit=crop', alt: 'Grilled food', caption: 'Perfectly grilled food' },
@@ -12,7 +13,7 @@ const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop', alt: 'Fine dining experience', caption: 'An exquisite dining experience' },
   { src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&h=900&fit=crop', alt: 'Luxury event decor', caption: 'Luxurious event decoration' },
   { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=800&fit=crop', alt: 'Executive catering service', caption: 'Catering for executives' },
-  { src: 'https://images.unsplash.com/photo-1505253716367-af78d4150e62?w=1200&h=600&fit=crop', alt: 'Artistic culinary presentation', caption: 'Culinary artistry' },
+  { src: culinaryArtistryImage, alt: 'Artistic culinary presentation', caption: 'Culinary artistry' },
   { src: 'https://images.unsplash.com/photo-1506280754576-f6fa8a873550?w=600&h=900&fit=crop', alt: 'Chef signature dish preparation', caption: 'Chef\'s signature dish' },
   { src: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=600&fit=crop', alt: 'Business lunch catering service', caption: 'Catering for a business lunch' },
   { src: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800&h=800&fit=crop', alt: 'Seasonal menu presentation', caption: 'Seasonal menu highlight' },
@@ -54,7 +55,8 @@ const GalleryGrid = () => {
         columnClassName="my-masonry-grid_column"
       >
         {galleryImages.map((image, index) => (
-          <div key={index} className="relative overflow-hidden rounded-lg group cursor-pointer" onClick={() => openLightbox(index)}>
+          <div key={index} className="relative overflow-hidden rounded-lg group cursor-pointer border-2 border-transparent" onClick={() => openLightbox(index)}>
+            <div className="gallery-image-flair"></div>
             <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" />
             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <p className="text-white text-center p-4">{image.caption}</p>

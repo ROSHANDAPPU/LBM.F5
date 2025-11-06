@@ -2,6 +2,7 @@ import culinaryImage from "@/assets/service-culinary.jpg";
 import corporateImage from "@/assets/service-corporate.jpg";
 import { Button } from "./UI/button";
 import { Link } from "react-router-dom";
+import { useSlideInLeft, useSlideInRight } from '@/Hooks/useScrollAnimation';
 
 const services = [
   {
@@ -30,6 +31,40 @@ const services = [
   },
 ];
 
+const ServiceItem = ({ service, index }: { service: typeof services[0], index: number }) => {
+  const { elementRef, isVisible } = index % 2 === 1 ? useSlideInRight() : useSlideInLeft();
+  const animationClass = index % 2 === 1 ? 'animate-slide-in-right' : 'animate-slide-in-left';
+
+  return (
+    <div
+      ref={elementRef}
+      className={`group flex flex-col md:flex-row items-center gap-12 lg:gap-24 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} ${animationClass} ${isVisible ? 'animate-visible' : ''}`}>
+      <div className="md:w-1/2 w-full">
+        <div className="relative aspect-square overflow-hidden rounded-lg">
+          <img 
+            src={service.image} 
+            alt={service.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      </div>
+      <div className="md:w-1/2 w-full space-y-6">
+        <h3 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight brass-bullet">
+          {service.title}
+        </h3>
+        <p className="text-base text-muted-foreground leading-relaxed font-light max-w-prose">
+          {service.description}
+        </p>
+        <Link to={service.slug}>
+          <Button variant="outline" size="lg" className="text-base font-normal tracking-wide uppercase">
+            Learn More
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 const Services = () => {
   return (
     <section className="py-32 px-6 sm:px-8 lg:px-12 bg-background">
@@ -46,32 +81,7 @@ const Services = () => {
         
         <div className="flex flex-col gap-32">
           {services.map((service, index) => (
-            <div 
-              key={index} 
-              className={`group flex flex-col md:flex-row items-center gap-12 lg:gap-24 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className="md:w-1/2 w-full">
-                <div className="relative aspect-square overflow-hidden rounded-lg">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-              <div className="md:w-1/2 w-full space-y-6">
-                <h3 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight brass-bullet">
-                  {service.title}
-                </h3>
-                <p className="text-base text-muted-foreground leading-relaxed font-light max-w-prose">
-                  {service.description}
-                </p>
-                <Link to={service.slug}>
-                  <Button variant="outline" size="lg" className="text-base font-normal tracking-wide uppercase">
-                    Learn More
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            <ServiceItem key={index} service={service} index={index} />
           ))}
         </div>
       </div>
