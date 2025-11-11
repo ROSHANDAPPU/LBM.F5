@@ -13,6 +13,7 @@ import { Button } from "@/Components/UI/button";
 import { Link } from "react-router-dom";
 import ScrollIndicator from '@/Components/ScrollIndicator';
 import StarRating from '@/Components/UI/StarRating';
+import { useIsMobile } from "@/Hooks/use-mobile";
 
 
 // Custom hook for alternating direction autoplay
@@ -22,6 +23,7 @@ import StarRating from '@/Components/UI/StarRating';
 
 
 const Index = () => {
+  const isMobile = useIsMobile();
 
   return (
     <div className="min-h-screen">
@@ -126,7 +128,7 @@ const Index = () => {
       </div>
 
       <section
-        className="relative bg-center bg-cover bg-no-repeat text-white text-center py-28 bg-fixed"
+        className={`relative bg-center bg-cover bg-no-repeat text-white text-center py-28 ${isMobile ? 'bg-scroll' : 'bg-fixed'}`}
         style={{ backgroundImage: `url('https://gcmais.com.br/wp-content/uploads/2022/12/produtos-das-ceias-de-natal-e-reveillon-podem-variar-ate-281-em-fortaleza.jpeg')` }}
       >
         <div className="absolute inset-0 bg-black/55"></div>
