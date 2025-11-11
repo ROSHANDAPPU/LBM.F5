@@ -56,7 +56,7 @@ const ServiceItem = ({ service, index }: { service: typeof services[0], index: n
           {service.description}
         </p>
         <Link to={service.slug}>
-          <Button variant="outline" size="lg" className="text-base font-normal tracking-wide uppercase">
+          <Button variant="ghost" size="lg" className="text-base font-normal tracking-wide uppercase text-reserved-burgundy border border-reserved-burgundy bg-transparent hover:bg-reserved-burgundy hover:text-creamy-white">
             Learn More
           </Button>
         </Link>

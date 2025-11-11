@@ -42,7 +42,7 @@ const Gallery = () => {
       <ScrollIndicator />
       <section className={`transition-colors duration-500 ${isGalleryVisible ? 'bg-soft-blush w-screen relative left-[50%] right-[50%] -mx-[50vw]' : ''}`}>
         <div className="container mx-auto px-4 py-8" ref={galleryRef}>
-          <h1 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isGalleryVisible ? 'text-white' : ''}`} style={{ marginTop: '27px', fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h1>
+          <h1 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isGalleryVisible ? 'text-creamy-white' : ''}`} style={{ marginTop: '27px', fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h1>
           <GalleryGrid />
         </div>
       </section>

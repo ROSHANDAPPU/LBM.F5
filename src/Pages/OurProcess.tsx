@@ -56,7 +56,7 @@ const OurProcess = () => {
       <section ref={ref1} className={`flex flex-col md:flex-row items-center justify-center gap-10 py-20 px-6 bg-light-cream transition-opacity duration-1000 ease-in-out ${isVisible1 ? 'opacity-100' : 'opacity-0'}`}>
         {/* Left: Text */}
         <div className="md:w-1/2">
-          <h2 className="text-3xl font-semibold mb-6 text-[#532f36]">What’s Included</h2>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-[#532f36]">What’s Included</h2>
           <ul className="space-y-3 text-lg text-gray-700">
             <li>✓ Custom menu design tailored to your event</li>
             <li>✓ Dietary and allergen accommodation planning</li>
@@ -80,13 +80,13 @@ const OurProcess = () => {
       <section ref={ref2} className={`flex flex-col md:flex-row-reverse items-center justify-center gap-10 py-20 px-6 bg-[#f9f5f3] transition-opacity duration-1000 ease-in-out ${isVisible2 ? 'opacity-100' : 'opacity-0'}`}>
         {/* Right: Text */}
         <div className="md:w-1/2">
-          <h2 className="text-3xl font-semibold mb-6 text-[#532f36]">Budget & Minimums</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            Our pricing is transparent and tailored to your event’s scale and complexity. We work with you to create a memorable experience that respects your budget. Minimums may apply depending on the event type and guest count.
-          </p>
-          <p className="text-lg text-gray-700">
-            To optimize your budget, consider a buffet-style service or focusing on a curated selection of signature dishes. We are happy to provide guidance on how to achieve your vision effectively.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-ink-navy">Budget & Minimums</h2>
+           <p className="text-lg text-ink-navy mb-4">
+             Our pricing is transparent and tailored to your event’s scale and complexity. We work with you to create a memorable experience that respects your budget. Minimums may apply depending on the event type and guest count.
+           </p>
+           <p className="text-lg text-ink-navy">
+             To optimize your budget, consider a buffet-style service or focusing on a curated selection of signature dishes. We are happy to provide guidance on how to achieve your vision effectively.
+           </p>
         </div>
 
         {/* Left: Image */}
@@ -105,12 +105,12 @@ const OurProcess = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column: Intro and CTA */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-ink-navy" style={{ fontFamily: 'Montserrat, sans-serif' }}>Kalm Queries</h2>
+              <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-4 text-reserved-burgundy" style={{ fontFamily: 'Libre Baskerville, serif' }}>Mesa Preguntas</h2>
               <p className="text-lg text-ink-navy mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 There's no such thing as a "silly" question!<br />
                 Our team is here to answer any you may have, but here are a few that we often hear.
               </p>
-              <a href="#contact" className="inline-flex items-center text-ink-navy font-semibold text-lg border border-ink-navy px-6 py-3 rounded-full hover:bg-ink-navy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <a href="#contact" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Ask us a question
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>

@@ -7,10 +7,11 @@ const SocialProof: React.FC = () => {
   return (
     <div
       ref={elementRef}
-      className={`bg-background py-16 animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}
+      className={`bg-background py-16 -mt-16 animate-fade-in-up ${isVisible ? 'animate-visible' : ''}`}
     >
       <div className="container mx-auto">
-        <h2 className="text-center text-3xl font-bold text-gray-800">Our Partners</h2>
+        <div className="h-px w-12 bg-accent/40 mx-auto mb-8" />
+        <h2 className="text-center section-title mb-4 font-serif">Our Partners</h2>
         <div className="flex flex-col sm:flex-row justify-center items-center mt-8 gap-6 sm:gap-x-8">
           <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-8 sm:h-12 filter grayscale" />
           <div className="hidden sm:block h-12 w-px bg-brass"></div>

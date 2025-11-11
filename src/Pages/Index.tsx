@@ -33,7 +33,11 @@ const Index = () => {
         title="Effortless Elegance for Your Event"
         subtitle="QUIET, ACCESSIBLE LUXURY FOR EVERY OCCASION."
         cta1={<Button size="lg" className="text-base font-normal tracking-wide">REQUEST A PROPOSAL</Button>}
-        cta2={<Button size="lg" variant="outline" className="text-base font-normal tracking-wide">VIEW MENU</Button>}
+        cta2={
+          <Button asChild size="lg" className="bg-creamy-white bg-opacity-100 text-ink-navy tracking-wider border border-ink-navy/20 shadow-sm hover:bg-stone hover:bg-opacity-50 hover:text-ink-navy transition-all duration-300 ease-in-out uppercase">
+            <Link to="/menu">VIEW MENU</Link>
+          </Button>
+        }
       />
       <ScrollIndicator />
 
@@ -113,19 +117,7 @@ const Index = () => {
         <Testimonials />
       </div>
 
-      {/* Gold separator line */}
-      <div className="flex justify-center py-8">
-        <div className="w-24 h-px bg-accent"></div>
-      </div>
-
       <SocialProof />
-
-
-
-      {/* Gold separator line */}
-      <div className="flex justify-center py-8">
-        <div className="w-24 h-px bg-accent"></div>
-      </div>
 
       <section
         className={`relative bg-center bg-cover bg-no-repeat text-white text-center py-28 ${isMobile ? 'bg-scroll' : 'bg-fixed'}`}
@@ -133,8 +125,8 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-black/55"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-libre-baskerville">Ready to Begin?</h2>
-          <p className="text-lg mb-8 text-white/90">Let's create something beautiful together</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-creamy-white mb-4 font-libre-baskerville">Ready to Begin?</h2>
+          <p className="text-lg mb-8 text-creamy-white">Let's create something beautiful together</p>
 
           <div className="flex flex-col justify-center gap-4 max-w-xs mx-auto">
             <a
@@ -145,7 +137,7 @@ const Index = () => {
             </a>
             <a
               href="/book-event"
-              className="border border-white text-white px-4 py-3 hover:bg-white hover:text-[#532f36] transition-all w-full text-center text-sm"
+              className="border border-white text-white px-4 py-3 hover:bg-creamy-white hover:text-reserved-burgundy transition-all w-full text-center text-sm"
             >
               BOOK A TASTING
             </a>

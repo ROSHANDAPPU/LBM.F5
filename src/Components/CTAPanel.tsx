@@ -34,7 +34,7 @@ const CTAPanel: React.FC<CTAPanelProps> = ({
     >
       <div className="absolute inset-0 bg-black/30"></div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-libre-baskerville">
+        <h2 className="text-3xl md:text-5xl font-bold text-creamy-white mb-4 font-libre-baskerville">
           {title}
         </h2>
         <div className="flex gap-4 flex-wrap justify-center">
@@ -42,7 +42,7 @@ const CTAPanel: React.FC<CTAPanelProps> = ({
             <Link to={primaryButtonLink}>{primaryButtonText}</Link>
           </Button>
           {secondaryButtonText && secondaryButtonLink && (
-            <Button asChild size="lg" variant="ghost" className="uppercase text-white border border-white hover:bg-white hover:text-black">
+            <Button asChild size="lg" variant="ghost" className="uppercase text-creamy-white border border-creamy-white hover:bg-creamy-white hover:text-reserved-burgundy">
               <Link to={secondaryButtonLink}>{secondaryButtonText}</Link>
             </Button>
           )}

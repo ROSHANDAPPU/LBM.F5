@@ -159,7 +159,10 @@ const About = () => {
       {/* Team Section */}
       <div className="py-16" style={{ backgroundColor: 'hsl(var(--background-secondary))' }}>
         <div className="container mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-16" style={{ fontFamily: 'Libre Baskerville, serif' }}>Meet Our Team</h2>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight" style={{ fontFamily: 'Libre Baskerville, serif' }}>Meet Our Team</h2>
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            The passionate culinary artisans and hospitality experts who bring every gathering to life with quiet elegance and unwavering dedication.
+          </p>
           <div className="grid md:grid-cols-3 gap-12">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center cursor-pointer group" onClick={() => openLightbox(index)}>
@@ -207,7 +210,7 @@ const About = () => {
       </section>
       <div className="py-16 bg-stone">
         <div className="container mx-auto">
-          <h2 className="text-center text-3xl font-bold text-ink-navy">Our Partners</h2>
+          <h2 className="text-center section-title mb-4 font-serif text-ink-navy">Our Partners</h2>
           <div className="flex justify-center items-center mt-8 space-x-8">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
             <div className="h-12 w-px bg-brass"></div>
