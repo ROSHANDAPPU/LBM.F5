@@ -8,6 +8,7 @@ import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
 import Lightbox from "yet-another-react-lightbox";
+import ScrollIndicator from "@/Components/ScrollIndicator";
 
 const teamMembers = [
    {
@@ -80,8 +81,6 @@ const About = () => {
         title="Our Story, Quietly Told"
         subtitle="chef-led menus with discreet hospitality"
         cta1={<Button size="lg" className="mt-8 uppercase tracking-wide">Book a Tasting</Button>}
-        video={aboutVideo}
-        video={aboutVideo}
       />
       <ScrollIndicator />
 
@@ -189,7 +188,7 @@ const About = () => {
             description: teamMembers[currentMemberIndex].bio,
           },
         ]}
-        render={{ 
+        render={{
           slide: ({ slide, rect }) => (
             <div className="relative w-full h-full flex items-center justify-center">
               <div className="bg-cream p-8 rounded-lg max-w-3xl w-full mx-4 flex items-center space-x-8">
