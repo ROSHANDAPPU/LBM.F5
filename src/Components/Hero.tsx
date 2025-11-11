@@ -1,5 +1,7 @@
 import { Button } from "./UI/button";
-import heroImage from "@/assets/NEW.png";
+import heroVideoDesktop from "/Public/videos/Hero desktop.mp4";
+import heroVideoMobile from "/Public/videos/hero mobile.mp4";
+import { useIsMobile } from "../Hooks/use-mobile";
 
 interface HeroProps {
   title: React.ReactNode;
@@ -9,6 +11,9 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
+  const isMobile = useIsMobile();
+  const heroVideo = isMobile ? heroVideoMobile : heroVideoDesktop;
+
   return (
     <div className="hero-wrapper bg-transparent"
          style={{
@@ -23,20 +28,31 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
            marginTop: '40px'
          }}
     >
-      <div className="hero-image-box"
+      <div className="hero-video-box"
            style={{
              maxWidth: '85%',
              width: '100%',
              height: '85%',
-             backgroundImage: `url(${heroImage})`,
-             backgroundSize: 'cover',
-             backgroundPosition: 'center',
-             backgroundRepeat: 'no-repeat',
              position: 'relative',
              borderRadius: '1rem'
            }}
       >
         <div className="burgundy-flair" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '1rem'
+          }}
+          src={heroVideo}
+        >
+          Your browser does not support the video tag.
+        </video>
         <div
           style={{
             position: 'absolute',

@@ -14,7 +14,8 @@ import Gallery from "./Pages/Gallery";
 import OurProcess from "./Pages/OurProcess";
 import BookEvent from "./Pages/BookEvent";
 import SpecialOccasions from "./Pages/SpecialOccasions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import OpeningVideo from "./Components/OpeningVideo";
 
 const queryClient = new QueryClient();
 
@@ -28,28 +29,42 @@ function ScrollToTop() {
   return null;
 }
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/catering" element={<Catering />} />
-        <Route path="/corporate" element={<Corporate />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/our-process" element={<OurProcess />} />
-        <Route path="/book-event" element={<BookEvent />} />
-        <Route path="/special-occasions" element={<SpecialOccasions />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [showVideo, setShowVideo] = useState(true);
+
+  const handleVideoEnd = () => {
+    setShowVideo(false);
+  };
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        {showVideo ? (
+          <OpeningVideo onVideoEnd={handleVideoEnd} />
+        ) : (
+          <>
+            <Toaster />
+            <Sonner />
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/catering" element={<Catering />} />
+              <Route path="/corporate"element={<Corporate />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/our-process" element={<OurProcess />} />
+              <Route path="/book-event" element={<BookEvent />} />
+              <Route path="/special-occasions" element={<SpecialOccasions />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </>
+        )}
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
