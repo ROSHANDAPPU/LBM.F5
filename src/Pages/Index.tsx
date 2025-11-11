@@ -126,13 +126,13 @@ const Index = () => {
       </div>
 
       <section
-        className="relative bg-center bg-cover bg-no-repeat text-white text-center py-28 bg-[url('/hero-table.jpg')]"
+        className="relative bg-center bg-cover bg-no-repeat text-white text-center py-28 bg-fixed"
+        style={{ backgroundImage: `url('https://gcmais.com.br/wp-content/uploads/2022/12/produtos-das-ceias-de-natal-e-reveillon-podem-variar-ate-281-em-fortaleza.jpeg')` }}
       >
-        <div className="absolute inset-0 bg-black/45"></div>
-
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4">Ready to Begin?</h2>
-          <p className="text-lg mb-8">Let's create something beautiful together</p>
+        <div className="absolute inset-0 bg-black/55"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-libre-baskerville">Ready to Begin?</h2>
+          <p className="text-lg mb-8 text-white/90">Let's create something beautiful together</p>
 
           <div className="flex flex-col justify-center gap-4 max-w-xs mx-auto">
             <a
