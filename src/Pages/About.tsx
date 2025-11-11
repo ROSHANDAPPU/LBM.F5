@@ -8,10 +8,6 @@ import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
 import Lightbox from "yet-another-react-lightbox";
-a import aboutVideo from "/Public/About.mp4";
-a import aboutVideo from "/Public/About.mp4";
-import ScrollIndicator from "@/Components/ScrollIndicator";
-import "yet-another-react-lightbox/styles.css";
 
 const teamMembers = [
    {
