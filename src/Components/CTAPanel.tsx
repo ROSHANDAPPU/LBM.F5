@@ -24,7 +24,7 @@ const CTAPanel: React.FC<CTAPanelProps> = ({
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ctaBannerImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: 'scroll',
       }}
     >
       <div className="absolute inset-0 bg-black/40"></div>

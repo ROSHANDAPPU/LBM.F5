@@ -57,22 +57,22 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
               height: '100%'
             }}
           >
-            <div className="max-w-4xl mx-auto space-y-12 px-6 sm:px-8 lg:px-12">
-               <p className="text-base sm:text-lg max-w-md mx-auto text-white/90 font-light uppercase">
-                 {subtitle}
-               </p>
+            <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12 px-6 sm:px-8 lg:px-12">
+                <p className="text-base sm:text-lg max-w-md mx-auto text-white/90 font-light uppercase">
+                  {subtitle}
+                </p>
 
-               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-8 text-white animate-fade-in tracking-tight">
-                 {title}
-               </h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light mb-6 sm:mb-8 text-white animate-fade-in tracking-tight">
+                  {title}
+                </h1>
 
 
-               <div className="h-px w-12 bg-white/60 mx-auto my-12" />
+                <div className="h-px w-12 bg-white/60 mx-auto my-8 sm:my-12" />
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                {cta1}
-                {cta2}
-              </div>
+               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-6 sm:pt-8">
+                 {cta1}
+                 {cta2}
+               </div>
             </div>
           </div>
         </div>

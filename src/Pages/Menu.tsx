@@ -29,16 +29,16 @@ const Menu = () => {
       <Header />
 
       <Hero
-        title="Seasonal Menus, Thoughtfully Composed"
+        title={<>Seasonal Menus,<br className="sm:hidden" /> Thoughtfully Composed</>}
         subtitle="Rentals, staffing, florals/coordination (if offered)."
         cta1={
-          <Button size="lg" className="uppercase">
+          <Button size="lg" className="uppercase w-full">
             <Link to="/packages">View Packages</Link>
           </Button>
         }
         cta2={
-          <Button size="lg" variant="outline" className="uppercase">
-            <Link to="/menu.pdf" target="_blank">Download our menu (Download PDF)</Link>
+          <Button size="lg" variant="outline" className="uppercase w-full">
+            <Link to="/menu.pdf" target="_blank">Download Menu</Link>
           </Button>
         }
       />
@@ -592,7 +592,7 @@ const Menu = () => {
 
                     <div className="">
                       <div className="text-center">
-                        <h4 className="text-lg font-medium text-gray-900 mb-2">Summer Skewers</h4>
+                        <h4 className="text-lg font-medium text-gray-900 mb-2">Chili-Lime Shrimp Skewers</h4>
                         <p className="text-sm text-gray-600 mb-3">Petite, savory meat and vegetable skewers grilled over an open flame with guest's choice of: harissa chicken, marinated skirt steak, chili lime sea bass, or smoked wild mushrooms; served with salsa verde and creamy Romesco dipping sauces</p>
                         <span className="text-lg font-semibold text-gray-900">$14 per person</span>
                       </div>
@@ -684,7 +684,7 @@ const Menu = () => {
           target="_blank" 
           rel="noopener noreferrer"
         >
-          Download our menu (Download PDF)
+          Download Menu
         </a>
         <p className="menu-note">
           Rentals, staffing, florals/coordination (if offered).

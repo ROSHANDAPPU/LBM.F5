@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/Components/UI/checkbox";
 import { useToast } from "@/Hooks/use-toast";
 import Testimonials from "@/Components/Testimonials";
+import CTAPanel from "@/Components/CTAPanel";
 
 const BookEvent = () => {
   const { toast } = useToast();
@@ -442,20 +443,14 @@ const BookEvent = () => {
         </div>
       </div>
 
-      {/* Secondary CTA */}
-      <div className="py-16 bg-reserved-burgundy">
-        <div className="container mx-auto px-8 text-center">
-          <h2 className="text-3xl font-light text-white mb-4" style={{ fontFamily: 'Libre Baskerville, serif' }}>
-            Not Ready to Book Yet?
-          </h2>
-          <p className="text-white mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Download our menu PDF to explore your options at your own pace.
-          </p>
-          <Button size="lg" className="bg-white text-reserved-burgundy hover:bg-stone hover:text-reserved-burgundy font-semibold px-8 py-3">
-            Download Menu PDF
-          </Button>
-        </div>
-      </div>
+      <CTAPanel
+        title="Not Ready to Book Yet?"
+        primaryButtonText="Download Menu PDF"
+        primaryButtonLink="/menu.pdf"
+        secondaryButtonText="View Our Gallery"
+        secondaryButtonLink="/gallery"
+        imageUrl="/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg"
+      />
 
       <Footer />
     </div>

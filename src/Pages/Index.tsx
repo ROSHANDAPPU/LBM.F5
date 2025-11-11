@@ -126,8 +126,7 @@ const Index = () => {
       </div>
 
       <section
-        className="relative bg-fixed bg-center bg-cover bg-no-repeat text-white text-center py-28"
-        style={{ backgroundImage: `url(/hero-table.jpg)` }}
+        className="relative bg-center bg-cover bg-no-repeat text-white text-center py-28 bg-[url('/hero-table.jpg')]"
       >
         <div className="absolute inset-0 bg-black/45"></div>
 
@@ -135,16 +134,16 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">Ready to Begin?</h2>
           <p className="text-lg mb-8">Let's create something beautiful together</p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col justify-center gap-4 max-w-xs mx-auto">
             <a
               href="/book-event"
-              className="bg-[#532f36] border border-[#532f36] text-white px-8 py-3 hover:bg-transparent hover:text-white transition-all"
+              className="bg-[#532f36] border border-[#532f36] text-white px-4 py-3 hover:bg-transparent hover:text-white transition-all w-full text-center text-sm"
             >
               REQUEST A PROPOSAL
             </a>
             <a
               href="/book-event"
-              className="border border-white text-white px-8 py-3 hover:bg-white hover:text-[#532f36] transition-all"
+              className="border border-white text-white px-4 py-3 hover:bg-white hover:text-[#532f36] transition-all w-full text-center text-sm"
             >
               BOOK A TASTING
             </a>
