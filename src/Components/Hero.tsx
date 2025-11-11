@@ -8,11 +8,12 @@ interface HeroProps {
   subtitle: React.ReactNode;
   cta1?: React.ReactNode;
   cta2?: React.ReactNode;
+  video?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2 }) => {
+const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2, video }) => {
   const isMobile = useIsMobile();
-  const heroVideo = isMobile ? heroVideoMobile : heroVideoDesktop;
+  const heroVideo = video || (isMobile ? heroVideoMobile : heroVideoDesktop);
 
   return (
     <div className="hero-wrapper bg-transparent"

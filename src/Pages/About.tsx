@@ -8,6 +8,8 @@ import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
 import Lightbox from "yet-another-react-lightbox";
+a import aboutVideo from "/Public/About.mp4";
+a import aboutVideo from "/Public/About.mp4";
 import ScrollIndicator from "@/Components/ScrollIndicator";
 import "yet-another-react-lightbox/styles.css";
 
@@ -82,6 +84,8 @@ const About = () => {
         title="Our Story, Quietly Told"
         subtitle="chef-led menus with discreet hospitality"
         cta1={<Button size="lg" className="mt-8 uppercase tracking-wide">Book a Tasting</Button>}
+        video={aboutVideo}
+        video={aboutVideo}
       />
       <ScrollIndicator />
 
