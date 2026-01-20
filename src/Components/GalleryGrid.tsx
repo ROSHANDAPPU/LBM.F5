@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import culinaryArtistryImage from "/Public/service-culinary.jpg";
+import culinaryArtistryImage from "@/assets/service-culinary.jpg";
 
 const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=900&fit=crop', alt: 'Grilled food', caption: 'Perfectly grilled food' },

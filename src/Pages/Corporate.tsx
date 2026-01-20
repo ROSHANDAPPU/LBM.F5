@@ -8,28 +8,69 @@ const Corporate = () => {
     <div className="min-h-screen">
       <Header />
       <div
-        className="relative w-full h-[60vh] bg-cover bg-center flex items-center justify-center"
+        className="relative w-full h-[80vh] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${corporateImage})` }}
       >
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Corporate Events</h1>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Corporate Caterings</h1>
           <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light">
-            Elevate your corporate gatherings with La Bella Mesa's sophisticated event planning and catering services. From executive luncheons to grand galas, we ensure every detail reflects your brand's excellence.
+            Professional gatherings that impress. We handle the details. You focus on your guests.
           </p>
         </div>
       </div>
       <ScrollIndicator />
 
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-background">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-light mb-8">Seamless Corporate Experiences</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            La Bella Mesa specializes in creating professional and memorable corporate events. We understand the importance of precision, presentation, and seamless execution when it comess to your business functions. Our team works diligently to manage all aspects, from menu design and dietary accommodations to venue selection and logistical coordination.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Whether you're planning a product launch, a client appreciation dinner, an annual conference, or an intimate team-building retreat, we provide tailored solutions that align with your objectives and budget. Impress your guests and foster meaningful connections with an event designed for success.
-          </p>
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-light mb-8">Corporate Caterings</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Professional gatherings that impress. We handle the details. You focus on your guests.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-medium mb-4">Quick Highlights</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2">
+              <li>Guest range - 10-400</li>
+              <li>Service styles - Drop-Off Catering (Grab & Go), buffet style, Passed Hors d'Oeuvres, Wellness-Focused Catering</li>
+              <li>Location coverage - Dallas & surrounding areas</li>
+              <li>What's included - Equipment & Service Ware, Delivery, Setup & Timing, Staffing (If Full-Service), Presentation & Styling, clean up, grazing tables</li>
+            </ul>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-medium mb-4">Why Choose Us</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-lg font-medium">Trusted by Cultural & Corporate Institutions</h4>
+                <p className="text-muted-foreground">Our work with museums, galleries, nonprofits, and corporate clients reflects our ability to execute at a high level in professional environments.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-medium">Elevated, Thoughtful Menus</h4>
+                <p className="text-muted-foreground">Chef-driven dishes designed for professional settings—beautifully presented, easy to enjoy, and tailored to your event's goal</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-medium mb-4">Mini FAQ</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-medium">What types of corporate events do you cater?</h4>
+                <p className="text-muted-foreground">We cater a wide range of corporate events, including team lunches, quarterly meetings, client receptions, networking events, executive meetings, holiday parties, and team-building experiences.</p>
+              </div>
+              <div>
+                <h4 className="font-medium">How far in advance should I book?</h4>
+                <p className="text-muted-foreground">We recommend booking at least 2–3 weeks in advance for corporate events. Larger events or full-service catering may require additional lead time.</p>
+              </div>
+              <div>
+                <h4 className="font-medium">Do you provide beverages or alcohol service?</h4>
+                <p className="text-muted-foreground">We offer non-alcoholic beverage service such as water, coffee, tea, and soft drinks. For alcohol service, we can coordinate with licensed bartenders.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

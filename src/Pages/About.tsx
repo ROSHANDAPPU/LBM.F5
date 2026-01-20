@@ -7,42 +7,39 @@ import Partners from "@/Components/Partners";
 import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
-import Lightbox from "yet-another-react-lightbox";
 import ScrollIndicator from "@/Components/ScrollIndicator";
 
 const teamMembers = [
-   {
-     name: "Chef Isabella Romano",
-     title: "Founder & Executive Chef",
-     image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&h=400&fit=crop",
-     bio: "With over two decades of culinary artistry, Chef Isabella brings Italian heritage and modern innovation to every La Bella Mesa experience. Her philosophy of effortless elegance guides our approach to both cuisine and hospitality.",
-   },
-   {
-     name: "Marcus Chen",
-     title: "Operations Director",
-     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-     bio: "Marcus ensures that every detail, from initial consultation to final presentation, unfolds with seamless precision. His background in luxury hospitality brings the sophistication that defines our service.",
-   },
-   {
-     name: "Elena Vasquez",
-     title: "Hospitality Curator",
-     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-     bio: "Elena crafts the perfect atmosphere for each gathering, blending aesthetics with genuine care. Her intuitive approach to guest experience creates the calm, welcoming spaces that make our events unforgettable.",
-   },
+    {
+      name: "Executive chef Aida",
+      title: "Executive Chef",
+      image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&h=400&fit=crop",
+      bio: "Design menus tailored to the client's event, budget, and goals creating elevated dining moments that feel intentional, exclusive, and memorable.",
+    },
+    {
+      name: "Pastry chef Jenny",
+      title: "Pastry Chef",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      bio: "Design, prepare, and present refined desserts, cakes and sweet one bites for events, balancing flavor, aesthetics, and efficiency to deliver consistent, high-quality pastry service in a fast-paced catering environment.",
+    },
+    {
+      name: "Photographer Luis Alejandre",
+      title: "Photographer",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      bio: "Capture the essence of each event through high-quality, candid, and artfully composed photographs that tell a story of connection, celebration, and culinary artistry.",
+    },
  ];
 
 const About = () => {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentMemberIndex, setCurrentMemberIndex] = useState(0);
-
   const [isStoryVisible, setIsStoryVisible] = useState(false);
   const [isValuesVisible, setIsValuesVisible] = useState(false);
   const [isGalleryVisible, setIsGalleryVisible] = useState(false);
-  const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
+  const [isTeamVisible, setIsTeamVisible] = useState(false);
   const storyRef = useRef<HTMLDivElement>(null);
   const valuesRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,9 +55,9 @@ const About = () => {
         const rect = galleryRef.current.getBoundingClientRect();
         setIsGalleryVisible(rect.top < window.innerHeight && rect.bottom > 0);
       }
-      if (testimonialsRef.current) {
-        const rect = testimonialsRef.current.getBoundingClientRect();
-        setIsTestimonialsVisible(rect.top < window.innerHeight && rect.bottom > 0);
+      if (teamRef.current) {
+        const rect = teamRef.current.getBoundingClientRect();
+        setIsTeamVisible(rect.top < window.innerHeight && rect.bottom > 0);
       }
     };
 
@@ -69,10 +66,7 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const openLightbox = (index: number) => {
-    setCurrentMemberIndex(index);
-    setLightboxOpen(true);
-  };
+
 
   return (
     <div className="min-h-screen">
@@ -94,10 +88,10 @@ const About = () => {
       <div>
         <h3 className={`text-3xl font-light mb-6 transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Effortless Elegance</h3>
         <p className={`text-lg leading-relaxed transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          At La Bella Mesa, we believe that true hospitality is found in the quiet moments—the perfectly timed service, the thoughtfully curated menu, the subtle attention to detail that creates an atmosphere of effortless elegance. Our chef-led approach combines culinary artistry with discreet, unobtrusive service, ensuring every gathering unfolds with grace and tranquility.
+          La Bella Mesa was born from the friendship of a few small business and service providers with a passion for food and elevated culinary experiences, and a talent for curating unforgettable events. Together, we saw a gap in the industry: first-generation millennials, like us, who want to celebrate life’s milestones with style, joy, and flavor—without breaking the bank.
         </p>
         <p className={`text-lg leading-relaxed mt-4 transition-colors duration-500 ${isStoryVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          From intimate dinners to grand celebrations, we craft experiences that allow you to focus on what matters most: the connections, the conversations, the memories being made. Quiet luxury, simply served.
+          Drawing on our roots, creativity, and more than a decade of experience in the private and public culinary sector, we set out to design events that feel both elegant and effortless. And our mission goes beyond catering: we are committed to uplifting our community by building a network of small business owners, connecting clients with local talent, and creating opportunities that give back and generate jobs across the DFW area.
         </p>
       </div>
     </div>
@@ -115,8 +109,8 @@ const About = () => {
               <div className="gold-flair w-2 h-2"></div>
             </div>
             <div>
-              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Craft</h3>
-              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Every dish tells a story of meticulous attention to detail, from seasonal ingredient selection to artistic presentation. Our craft is rooted in tradition yet embraces innovation.</p>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Quality</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>We obsess over the details—from fresh ingredients to flawless service—so every event feels polished, thoughtful, and cared for.</p>
             </div>
           </li>
           <li className="flex items-start">
@@ -124,8 +118,8 @@ const About = () => {
               <div className="gold-flair w-2 h-2"></div>
             </div>
             <div>
-              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Calm Aesthetics</h3>
-              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Our spaces are designed for tranquility—soft lighting, natural materials, and thoughtful arrangements that create an atmosphere of quiet sophistication and comfort.</p>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Taste</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>Every bite should be memorable. We design flavor-forward menus that blend comfort, creativity, and a touch of surprise.</p>
             </div>
           </li>
           <li className="flex items-start">
@@ -133,8 +127,8 @@ const About = () => {
               <div className="gold-flair w-2 h-2"></div>
             </div>
             <div>
-              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Hospitality</h3>
-              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>True hospitality is anticipating needs before they're expressed, creating seamless experiences that allow guests to focus on connection rather than coordination.</p>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Budget Friendly</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>We believe great celebrations shouldn’t require a huge budget. We build smart, transparent packages that maximize value without sacrificing experience.</p>
             </div>
           </li>
           <li className="flex items-start">
@@ -142,8 +136,8 @@ const About = () => {
               <div className="gold-flair w-2 h-2"></div>
             </div>
             <div>
-              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Reliability</h3>
-              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>From the first consultation to the final farewell, every promise is kept. Our reliability builds trust that becomes the foundation of lasting relationships.</p>
+              <h3 className={`text-2xl font-light mb-3 transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-foreground'}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Fun</h3>
+              <p className={`text-lg leading-relaxed transition-colors duration-500 ${isValuesVisible ? 'text-white' : 'text-muted-foreground'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>We keep things light, joyful, and stress-free, creating events where guests can relax, connect, and genuinely enjoy the moment.</p>
             </div>
           </li>
         </ul>
@@ -155,74 +149,62 @@ const About = () => {
   </div>
 </section>
 
-      {/* Team Section */}
-      <div className="py-16" style={{ backgroundColor: 'hsl(var(--background-secondary))' }}>
-        <div className="container mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight" style={{ fontFamily: 'Libre Baskerville, serif' }}>Meet Our Team</h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            The passionate culinary artisans and hospitality experts who bring every gathering to life with quiet elegance and unwavering dedication.
-          </p>
-          <div className="grid md:grid-cols-3 gap-12">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="text-center cursor-pointer group" onClick={() => openLightbox(index)}>
-                <div className="relative overflow-hidden rounded-lg shadow-lg">
-                  <img src={member.image} alt={member.name} className="w-full h-auto filter grayscale transition-all duration-500 transform group-hover:scale-105 group-hover:filter-none" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                </div>
-                <h3 className="mt-6 text-xl font-light text-foreground" style={{ fontFamily: 'Libre Baskerville, serif' }}>{member.name}</h3>
-                <p className="text-lg text-muted-foreground mt-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>{member.title}</p>
-              </div>
-            ))}
-          </div>
+      {/* Sticky Team Section */}
+      <div ref={teamRef} className={`relative transition-colors duration-500 ${isTeamVisible ? 'bg-stone' : 'bg-background-secondary'}`}>
+        <div className="sticky top-0 h-screen">
+          {/* This div is for the sticky background, but the background is on the parent */}
         </div>
-      </div>
-
-      <Lightbox
-        open={lightboxOpen}
-        close={() => setLightboxOpen(false)}
-        slides={[
-          {
-            src: teamMembers[currentMemberIndex].image,
-            alt: teamMembers[currentMemberIndex].name,
-            title: teamMembers[currentMemberIndex].name,
-            description: teamMembers[currentMemberIndex].bio,
-          },
-        ]}
-        render={{
-          slide: ({ slide, rect }) => (
-            <div className="relative w-full h-full flex items-center justify-center">
-              <div className="bg-cream p-8 rounded-lg max-w-3xl w-full mx-4 flex items-center space-x-8">
-                <img src={slide.src} alt={slide.alt} className="w-1/2 filter grayscale rounded-lg" />
-                <div>
-                  <h3 className="text-3xl font-bold font-serif text-navy">{slide.title}</h3>
-                  <p className="text-lg text-gray-600 font-sans mt-2">{teamMembers[currentMemberIndex].title}</p>
-                  <p className="text-gray-700 font-sans mt-4">{slide.description}</p>
+        <div className="relative z-10 -mt-[100vh]">
+          {/* Team Content */}
+          <div className="py-16">
+            <div className="container mx-auto px-8 text-center">
+              <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white" style={{ fontFamily: 'Libre Baskerville, serif' }}>Meet Our Team</h2>
+              <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                The passionate culinary artisans and hospitality experts who bring every gathering to life with quiet elegance and unwavering dedication.
+              </p>
+            </div>
+            <div className="mt-16">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="flex flex-col md:flex-row items-center even:md:flex-row-reverse mb-20 last:mb-0">
+                  <div className="md:w-1/2">
+                    <img src={`${member.image}&w=800&h=800`} alt={member.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="md:w-1/2 p-8 md:p-16 text-center md:text-left text-white">
+                    <h3 className="text-3xl font-light" style={{ fontFamily: 'Libre Baskerville, serif' }}>{member.name}</h3>
+                    <p className="text-xl text-white/80 mt-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>{member.title}</p>
+                    <p className="text-lg text-white/80 mt-6 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{member.bio}</p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Testimonials */}
+          <section ref={testimonialsRef}>
+            <Testimonials />
+          </section>
+
+          {/* Partners */}
+          <div className="py-16">
+            <div className="container mx-auto">
+              <h2 className="text-center section-title mb-4 font-serif text-white">Our Partners</h2>
+              <div className="flex justify-center items-center mt-8 space-x-8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
+                <div className="h-12 w-px bg-brass"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-12 filter grayscale" />
+                <div className="h-12 w-px bg-brass"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" className="h-12 filter grayscale" />
+                <div className="h-12 w-px bg-brass"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-12 filter grayscale" />
+                <div className="h-12 w-px bg-brass"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" className="h-12 filter grayscale" />
               </div>
             </div>
-          )
-        }}
-      />
-
-      <section className={`transition-colors duration-500 ${isTestimonialsVisible ? 'bg-creamy-white' : 'bg-stone'}`} ref={testimonialsRef}>
-        <Testimonials />
-      </section>
-      <div className="py-16 bg-stone">
-        <div className="container mx-auto">
-          <h2 className="text-center section-title mb-4 font-serif text-ink-navy">Our Partners</h2>
-          <div className="flex justify-center items-center mt-8 space-x-8">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
-            <div className="h-12 w-px bg-brass"></div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-12 filter grayscale" />
-            <div className="h-12 w-px bg-brass"></div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" className="h-12 filter grayscale" />
-            <div className="h-12 w-px bg-brass"></div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-12 filter grayscale" />
-            <div className="h-12 w-px bg-brass"></div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" className="h-12 filter grayscale" />
           </div>
         </div>
       </div>
+
+
 <section className={`transition-colors duration-500 ${isGalleryVisible ? 'bg-reserved-burgundy w-screen relative left-[50%] right-[50%] -mx-[50vw]' : ''}`}>
   <div className="container mx-auto px-4 py-8" ref={galleryRef}>
     <h2 className={`text-4xl md:text-5xl font-light tracking-tight text-center mb-16 transition-colors duration-500 ${isGalleryVisible ? 'text-white' : ''}`} style={{ fontFamily: 'Libre Baskerville, serif' }}>Our Gallery</h2>

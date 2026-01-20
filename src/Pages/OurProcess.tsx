@@ -9,8 +9,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ChevronRight } from "lucide-react";
 import ScrollIndicator from "@/Components/ScrollIndicator";
 import CTAPanel from "@/Components/CTAPanel";
-import includedImage from "/Public/service-culinary.jpg";
-import budgetImage from "/Public/IMG_6473-scaled.jpeg";
+import includedImage from "@/assets/service-culinary.jpg";
+import budgetImage from "@/assets/IMG_6473-scaled.jpeg";
 
 const OurProcess = () => {
   const [ref1, isVisible1] = useFadeIn<HTMLDivElement>();

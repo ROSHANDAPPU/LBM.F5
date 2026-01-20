@@ -12,11 +12,16 @@ const Partners: React.FC = () => {
       <div className="container mx-auto">
         <h2 className="section-title mb-4 font-serif">Trusted By</h2>
         <div className="flex flex-col justify-center items-center mt-8 gap-y-4 max-w-full overflow-hidden">
-          <span className="logo-text-large font-serif text-center">TATLER</span>
-          <span className="logo-text-large font-serif text-center">ROCK MY WEDDING</span>
-          <span className="logo-text-large font-serif text-center">BRIDES</span>
-          <span className="logo-text-large font-serif text-center">SO YOU'RE GETTING MARRIED</span>
-          <span className="logo-text-large font-serif text-center">WHIMSICAL WONDERLAND WEDDINGS</span>
+          <span className="logo-text-large font-serif text-center">Dallas Museum of art</span>
+          <span className="logo-text-large font-serif text-center">Planned parenthood</span>
+          <span className="logo-text-large font-serif text-center">Cedars union</span>
+          <span className="logo-text-large font-serif text-center">Southwest airlines</span>
+          <span className="logo-text-large font-serif text-center">St.marks preparatory school</span>
+          <span className="logo-text-large font-serif text-center">Lamplighter school</span>
+          <span className="logo-text-large font-serif text-center">Dallas Zoo</span>
+          <span className="logo-text-large font-serif text-center">Latina social club dfw</span>
+          <span className="logo-text-large font-serif text-center">4dwn nonprofit</span>
+          <span className="logo-text-large font-serif text-center">The global latin factor podcast</span>
         </div>
       </div>
     </section>

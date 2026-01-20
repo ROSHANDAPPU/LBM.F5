@@ -8,28 +8,73 @@ const Catering = () => {
     <div className="min-h-screen">
       <Header />
       <div
-        className="relative w-full h-[60vh] bg-cover bg-center flex items-center justify-center"
+        className="relative w-full h-[80vh] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${culinaryImage})` }}
       >
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Elevated Catering</h1>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Engagements and Weddings</h1>
           <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light">
-            From intimate dinners to grand celebrations, La Bella Mesa crafts bespoke culinary experiences that delight the senses and leave a lasting impression. Our commitment to fresh, seasonal ingredients and impeccable presentation ensures every dish is a work of art.
+            Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.
           </p>
         </div>
       </div>
       <ScrollIndicator />
 
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-background">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-light mb-8">Our Culinary Philosophy</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            At La Bella Mesa, we believe that exceptional food is the heart of every memorable event. We meticulously source the finest local and seasonal ingredients, transforming them into exquisite dishes that tell a story. Our chefs are artists, dedicated to creating flavors that linger and presentations that captivate. Whether you envision a rustic family-style feast or a sophisticated multi-course tasting menu, we work closely with you to bring your culinary dreams to life.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Beyond the plate, our service is defined by warmth and professionalism. Our team ensures every detail is flawlessly executed, allowing you to relax and savor every moment with your guests. Experience the difference of catering that is truly elevated.
-          </p>
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-light mb-8">Engagements and Weddings</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-medium mb-4">Quick Highlights</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2">
+              <li>Guests: 50–300+</li>
+              <li>Service: Buffet, Family-Style, Plated</li>
+              <li>Includes: Food, service staff, serving service and clean up</li>
+              <li>Areas: dallas & surrounding areas</li>
+            </ul>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-medium mb-4">Why Choose Us</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-lg font-medium">Tailored Wedding Menus</h4>
+                <p className="text-muted-foreground">We adapt to your tastes, theme, and dietary needs.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-medium">Coordinated With Your Planner</h4>
+                <p className="text-muted-foreground">We sync with your timeline so service flows naturally.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-medium">Stress-Free Service</h4>
+                <p className="text-muted-foreground">Our team handles kitchen, service, and cleanup.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-medium mb-4">Mini FAQ</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-medium">How far in advance should we book?</h4>
+                <p className="text-muted-foreground">Ideally 3–6 months before your wedding date.</p>
+              </div>
+              <div>
+                <h4 className="font-medium">Do you handle dietary restrictions?</h4>
+                <p className="text-muted-foreground">Yes—vegetarian, vegan, and allergies can be accommodated.</p>
+              </div>
+              <div>
+                <h4 className="font-medium">Is staff included?</h4>
+                <p className="text-muted-foreground">Yes, all wedding packages include our service team.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

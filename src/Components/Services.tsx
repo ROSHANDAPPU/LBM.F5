@@ -6,28 +6,95 @@ import { useSlideInLeft, useSlideInRight } from '@/Hooks/useScrollAnimation';
 
 const services = [
   {
-    title: "Weddings",
-    description: "Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.",
+    title: "Private cooking classes",
+    description: "Experience bespoke culinary creations in the comfort of your home with our expert private chefs.",
     image: culinaryImage,
-    slug: "/catering",
+    slug: "/events",
+    quickHighlights: [
+      "Guest range - 2 -20+",
+      "Service styles - individual stations",
+      "Location coverage - Dallas & surrounding areas",
+      "What's included - one on one instructor opportunity, all tools and ingredients, set up and clean up"
+    ],
+    whyChooseUs: [
+      "Custom immersive experience - curated culinary experience designed exclusively for you and your group",
+      "Stress-Free Learning – Our team handles set up, service, and cleanup."
+    ],
+    faq: [
+      {
+        question: "How many people can attend a class?",
+        answer: "Class size varies depending on the experience and location, but most classes are ideal for small to mid-size groups. Larger groups can be accommodated with advance planning."
+      },
+      {
+        question: "What type of cooking classes do you offer?",
+        answer: "Classes can range from casual and fun to elevated, chef-led experiences depending on your goals."
+      },
+      {
+        question: "Do you accommodate dietary restrictions?",
+        answer: "Absolutely. Please let us know of any allergies or dietary restrictions in advance."
+      }
+    ]
   },
   {
-    title: "Corporate",
+    title: "Corporate caterings",
     description: "Professional gatherings that impress. We handle the details. You focus on your guests.",
     image: corporateImage,
     slug: "/corporate",
+    quickHighlights: [
+      "Guest range - 10-400",
+      "Service styles - Drop-Off Catering (Grab & Go), buffet style, Passed Hors d'Oeuvres, Wellness-Focused Catering",
+      "Location coverage - Dallas & surrounding areas",
+      "What's included - Equipment & Service Ware, Delivery, Setup & Timing, Staffing (If Full-Service), Presentation & Styling, clean up, grazing tables"
+    ],
+    whyChooseUs: [
+      "Trusted by Cultural & Corporate Institutions - Our work with museums, galleries, nonprofits, and corporate clients reflects our ability to execute at a high level in professional environments.",
+      "Elevated, Thoughtful Menus - Chef-driven dishes designed for professional settings—beautifully presented, easy to enjoy, and tailored to your event's goal"
+    ],
+    faq: [
+      {
+        question: "What types of corporate events do you cater?",
+        answer: "We cater a wide range of corporate events, including team lunches, quarterly meetings, client receptions, networking events, executive meetings, holiday parties, and team-building experiences."
+      },
+      {
+        question: "How far in advance should I book?",
+        answer: "We recommend booking at least 2–3 weeks in advance for corporate events. Larger events or full-service catering may require additional lead time."
+      },
+      {
+        question: "Do you provide beverages or alcohol service?",
+        answer: "We offer non-alcoholic beverage service such as water, coffee, tea, and soft drinks. For alcohol service, we can coordinate with licensed bartenders."
+      }
+    ]
   },
   {
-    title: "Intimate Gatherings",
-    description: "Seamless coordination. Trusted local vendors. We manage logistics. You enjoy the moment.",
+    title: "Engagements and weddings",
+    description: "Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.",
     image: culinaryImage,
-    slug: "/events",
-  },
-  {
-    title: "Special Occasions",
-    description: "Experience bespoke culinary creations in the comfort of your home with our expert private chefs.",
-    image: culinaryImage,
-    slug: "/special-occasions",
+    slug: "/catering",
+    quickHighlights: [
+      "Guests: 50–300+",
+      "Service: Buffet, Family-Style, Plated",
+      "Includes: Food, service staff, serving service and clean up",
+      "Areas: dallas & surrounding areas"
+    ],
+    whyChooseUs: [
+      "Tailored Wedding Menus – We adapt to your tastes, theme, and dietary needs.",
+      "Coordinated With Your Planner – We sync with your timeline so service flows naturally.",
+      "Stress-Free Service – Our team handles kitchen, service, and cleanup."
+    ],
+    faq: [
+      {
+        question: "How far in advance should we book?",
+        answer: "Ideally 3–6 months before your wedding date."
+      },
+      {
+        question: "Do you handle dietary restrictions?",
+        answer: "Yes—vegetarian, vegan, and allergies can be accommodated."
+      },
+      {
+        question: "Is staff included?",
+        answer: "Yes, all wedding packages include our service team."
+      }
+    ]
   },
 ];
 
@@ -41,8 +108,8 @@ const ServiceItem = ({ service, index }: { service: typeof services[0], index: n
       className={`group flex flex-col md:flex-row items-center gap-12 lg:gap-24 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} ${animationClass} ${isVisible ? 'animate-visible' : ''}`}>
       <div className="md:w-1/2 w-full">
         <div className="relative aspect-square overflow-hidden rounded-lg">
-          <img 
-            src={service.image} 
+          <img
+            src={service.image}
             alt={service.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
