@@ -10,12 +10,12 @@ import "./ChefFavorites.css";
 const dishes = [
   {
     name: "Charcuterie Grazing Table",
-    image: "service-culinary.jpg",
-    description: "A beautifully arranged charcuterie grazing table with artisanal cheeses, cured meats, fresh and dried fruits, crackers, and flavorful accompaniments—perfect for sharing and gathering. Great for corporate and wedding events.",
+    image: "hero-table.jpg",
+    description: "An abundant, beautifully styled buffet featuring artisanal cheeses, cured meats, gourmet crackers, fresh and dried fruits, nuts, and house-made dips. A feast for the eyes and palate.",
     // New data fields for the detail elements
-    detailImage: "service-culinary.jpg", // Using same image for now, can be updated with specific detail images
-    imageCaption: "A celebration of seasonal bounty, crafted with care.",
-    longDescription: "A beautifully arranged charcuterie grazing table with artisanal cheeses, cured meats, fresh and dried fruits, crackers, and flavorful accompaniments—perfect for sharing and gathering. Great for corporate and wedding events."
+    detailImage: "hero-table.jpg", // Using same image for now, can be updated with specific detail images
+    imageCaption: "A feast for the eyes and palate, perfect for any occasion.",
+    longDescription: "Our signature Charcuterie Grazing Table is a show-stopping centerpiece for any event. We artfully arrange a lavish selection of imported and domestic cheeses, premium cured meats, and a variety of accompaniments like olives, pickles, artisanal breads, and seasonal fruit. This interactive and highly customizable spread encourages mingling and is perfect for weddings, corporate functions, and social gatherings."
   },
   {
     name: "Classic Beef Wellington",

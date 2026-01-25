@@ -95,7 +95,7 @@ const Menu = () => {
                 <span className="text-4xl font-light text-[#C4A46A] group-hover:text-white transition-colors">1</span>
               </div>
               <h3 className="text-xl font-light text-gray-900 mb-4 group-hover:text-white transition-colors">Charcuterie Grazing Table</h3>
-              <p className="text-gray-700 group-hover:text-white/90 transition-colors">A beautifully arranged charcuterie grazing table with artisanal cheeses, cured meats, fresh and dried fruits, crackers, and flavorful accompaniments—perfect for sharing and gathering. Great for corporate and wedding events.</p>
+              <p className="text-gray-700 group-hover:text-white/90 transition-colors">An abundant, beautifully styled buffet featuring artisanal cheeses, cured meats, gourmet crackers, fresh and dried fruits, nuts, and house-made dips. A feast for the eyes and palate.</p>
             </div>
             
             <div className="text-center p-8 bg-light-cream rounded-lg shadow-sm border border-stone hover:bg-reserved-burgundy hover:text-white transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer group">

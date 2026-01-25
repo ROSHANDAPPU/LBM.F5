@@ -14,6 +14,7 @@ import Gallery from "./Pages/Gallery";
 import OurProcess from "./Pages/OurProcess";
 import BookEvent from "./Pages/BookEvent";
 import SpecialOccasions from "./Pages/SpecialOccasions";
+import SocialEvents from "./Pages/SocialEvents";
 import { useEffect, useState } from "react";
 import OpeningVideo from "./Components/OpeningVideo";
 
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/our-process" element={<OurProcess />} />
               <Route path="/book-event" element={<BookEvent />} />
               <Route path="/special-occasions" element={<SpecialOccasions />} />
+              <Route path="/social-events" element={<SocialEvents />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
