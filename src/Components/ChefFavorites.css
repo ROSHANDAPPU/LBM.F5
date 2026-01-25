@@ -1,287 +1,162 @@
-.chef-favorites-container {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  /* Dark, luxurious background */
-  background: #161312;
-  color: #f4f4f4;
-  padding: 4rem 10%;
-  overflow: hidden;
-  min-height: 100vh;
-  position: relative;
+/* src/Components/ChefFavorites.css */
+
+.chef-favorites-section {
+  background-color: #FFFFFF; /* Assuming a white background for the whole section */
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-.chef-left {
-  flex: 1;
+.chef-favorites-header {
+  margin-bottom: 3rem;
+}
+
+.chef-favorites-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.chef-favorites-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.chef-favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+  padding-bottom: 100px;
+}
+
+.chef-favorite-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* Higher z-index to ensure text is visible over the sliding images */
-  z-index: 3;
-  padding: 4rem 6rem;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(4px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
 }
 
-.chef-left h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+/* Staggered positions and animations */
+.chef-favorite-card:nth-child(1).is-visible {
+  opacity: 1;
+  transform: translateY(-10px) rotate(-0.5deg);
 }
 
-.chef-left ul {
-  list-style: none;
-  padding: 0;
+.chef-favorite-card:nth-child(2).is-visible {
+  opacity: 1;
+  transform: translateY(60px);
+  transition-delay: 0.2s;
 }
 
-.chef-left li {
-  font-size: 1.25rem;
-  color: #888; /* Inactive color */
-  margin-bottom: 0.7rem;
-  cursor: pointer;
-  /* Smooth transition for hover text color and movement */
-  transition: color 0.3s ease, transform 0.2s ease;
+.chef-favorite-card:nth-child(3).is-visible {
+  opacity: 1;
+  transform: translateY(10px) rotate(0.5deg);
+  transition-delay: 0.4s;
 }
 
-.chef-left li.active,
-.chef-left li:hover {
-  color: #fff; /* Active color */
-  transform: translateX(10px); /* Subtle shift for elegance */
+.chef-favorite-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
-.dish-description {
-  margin-top: 1.5rem;
-  font-style: italic;
-  color: #ccc;
+.chef-favorite-card:nth-child(1):hover {
+  transform: translateY(-18px) rotate(-0.5deg);
 }
 
-/* -------------------- IMAGE CONTAINER STYLES -------------------- */
-.chef-right {
-  flex: 1;
-  position: relative;
-  height: 100%;
+.chef-favorite-card:nth-child(2):hover {
+  transform: translateY(50px);
+}
+
+.chef-favorite-card:nth-child(3):hover {
+  transform: translateY(0px) rotate(0.5deg);
+}
+
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
-.dish-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* --- Initial State for Animation --- */
-  opacity: 0;
-  filter: blur(8px);
-  transform: scale(1.05);
-  transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
-}
-
-.dish-image {
-  position: absolute;
-  top: 0; left: 0;
+.card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  filter: blur(8px);
+  transition: transform 0.4s ease;
+}
+
+.chef-favorite-card:hover .card-image {
   transform: scale(1.05);
-  transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
 }
 
-/* Active image */
-.dish-image-container.active .dish-image,
-.dish-image.active {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
-  z-index: 2;
+.card-text-content {
+  background-color: #FAF5EB; /* Cream color */
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* -------------------- IMAGE OVERLAYS -------------------- */
-
-/* Style for the text overlaid on the large image */
-.dish-image .image-caption {
-    position: absolute;
-    top: 5%; /* Adjust vertical placement */
-    right: 5%; /* Adjust horizontal placement */
-
-    /* Elegant Script Font */
-    font-family: 'Playfair Display', serif; /* or a custom script font */
-    font-size: 1.2rem;
-    color: #f5f5f5; /* Light color for contrast */
-    text-align: right;
-    width: 50%;
-    /* Initial state for GSAP fade-in */
-    opacity: 0;
+.gold-divider {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, #d4af37, #b08d57);
+  margin-bottom: 1rem;
 }
 
-/* Container for the overlapping small image and its text */
-.image-detail-container {
-    position: absolute;
-    bottom: -10%; /* Move slightly below the main image bottom */
-    left: -10%; /* Move slightly past the main image left edge */
-    z-index: 3; /* Ensure it is above the main sliding images */
-    display: flex;
-    flex-direction: column;
-    width: 60%; /* Container width relative to chef-right */
-
-    /* Initial state for GSAP fade-in */
-    opacity: 0;
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
 }
 
-/* The small, close-up image style */
-.small-detail-image {
-    width: 70%; /* Size of the small image */
-    height: 250px; /* Fixed height for visual pop */
-    margin-bottom: 1rem;
-
-    object-fit: cover;
-    border-radius: 8px; /* Slightly smaller radius than main image */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Subtle drop shadow for depth */
+.card-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
 }
 
-/* The long description text beside the small image */
-.long-description {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #ccc;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 60%; /* Place it beside the small image */
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .chef-favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* ============================================== */
-/* === MOBILE STYLES (Screen size < 768px) === */
-/* ============================================== */
 @media (max-width: 768px) {
+  .chef-favorites-grid {
+    grid-template-columns: 1fr;
+  }
 
-    /* 1. Main Container: Stack content vertically */
-    .chef-favorites-container {
-        flex-direction: column;
-        padding: 2rem 5%; /* Less padding */
-        min-height: auto;
-    }
+  .chef-favorites-section {
+    padding: 3rem 1rem;
+  }
 
-    /* 2. Desktop Navigation: Hide on mobile */
-    .chef-left {
-        display: none;
-    }
+  /* Reset transforms and animations on mobile */
+  .chef-favorite-card.is-visible:nth-child(n) {
+    transform: translateY(0) rotate(0);
+    transition-delay: 0s;
+  }
 
-    /* 3. Mobile Navigation: Show on mobile */
-    .chef-navigation-header.mobile-only {
-        display: block;
-    }
+  .chef-favorite-card:hover {
+    transform: translateY(-8px);
+  }
 
-    /* 4. Image Container (chef-right): Ensure it takes full width */
-    .chef-right {
-        flex: auto;
-        width: 100%;
-        height: 400px; /* Adjust height for mobile viewing */
-        margin-bottom: 2rem;
-        /* CRUCIAL: Must be relative for absolute children to position correctly */
-        position: relative;
-    }
-
-    /* 5. Image Repositioning: Move the small image */
-    .image-detail-container {
-        /* Reposition relative to the main image */
-        bottom: -20px; /* Overlap the bottom slightly */
-        left: 5%;
-        width: 60%;
-        flex-direction: column;
-        /* Hide the long description text here as it moves outside the image box */
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .small-detail-image {
-        width: 100%; /* Make the small image fill its container width */
-        height: 180px; /* Reduced height */
-    }
-
-    /* 6. Long Description Text (Now at the bottom of the section) */
-    .long-description {
-        /* Re-purpose this class to display the text at the bottom */
-        position: static; /* Remove absolute positioning */
-        width: 100%;
-        font-size: 1rem;
-        padding: 0 5%;
-        margin-top: 1rem; /* Space below the image container */
-
-        /* The content of the description needs to be rendered here */
-        /* To do this, we need to modify the JSX render to move the description */
-    }
-
-    /* Hide the description text inside the image-detail-container on mobile */
-    .image-detail-container .long-description {
-        display: none;
-    }
-
-    /* Styling for Navigation Arrows and Title */
-    .chef-navigation-header {
-        text-align: center;
-        margin-bottom: 1rem;
-        display: none; /* Hidden by default, shown on mobile with .mobile-only */
-    }
-
-    .chef-navigation-header.mobile-only {
-        display: block;
-    }
-
-    .section-pretitle {
-        font-size: 0.875rem;
-        color: #888;
-        margin-bottom: 0.5rem;
-    }
-
-    .dish-title-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .dish-number {
-        font-size: 1.125rem;
-        color: #555;
-    }
-
-    .dish-title-wrapper h2 {
-        font-size: 1.5rem;
-        margin: 0;
-    }
-
-    .nav-arrows {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .nav-arrows button {
-        background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 1.25rem;
-        color: #333;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.3s;
-    }
-
-    .nav-arrows button:hover {
-        background: linear-gradient(135deg, #e0e0e0, #d0d0d0);
-        transform: scale(1.1);
-    }
-
-    .nav-arrows button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-}
-
-/* Desktop Navigation (shown by default, hidden on mobile) */
-.chef-navigation-header {
-    display: none;
+  .chef-favorite-card:nth-child(1):hover,
+  .chef-favorite-card:nth-child(2):hover,
+  .chef-favorite-card:nth-child(3):hover {
+    transform: translateY(-8px);
+  }
 }

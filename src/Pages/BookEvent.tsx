@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/Components/UI/checkbox";
 import { useToast } from "@/Hooks/use-toast";
 import Testimonials from "@/Components/Testimonials";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/Components/UI/accordion";
 import CTAPanel from "@/Components/CTAPanel";
 
 const BookEvent = () => {
@@ -349,13 +350,14 @@ const BookEvent = () => {
       <Header />
 
       {/* Hero Section */}
-      <div className="bg-stone py-16">
-        <div className="container mx-auto px-8 text-center">
-          <div style={{ marginTop: '150px' }}>
-            <h1 className="text-4xl md:text-5xl font-light tracking-tight text-ink-navy mb-4" style={{ fontFamily: 'Libre Baskerville, serif' }}>
+      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${(import.meta as any).env?.BASE_URL || "/"}book-event-hero.jpg)` }}>
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-8">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-4" style={{ fontFamily: 'Libre Baskerville, serif' }}>
               Book Your Event
             </h1>
-            <p className="text-lg text-ink-navy max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-lg text-white/90 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Let's bring your vision to life. Tell us about your event and we'll create a custom proposal tailored to your needs.
             </p>
           </div>
@@ -421,25 +423,37 @@ const BookEvent = () => {
       <Testimonials />
 
       {/* FAQ Section */}
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-light-cream">
         <div className="container mx-auto px-8 max-w-4xl">
           <h2 className="text-3xl font-light text-center text-ink-navy mb-12" style={{ fontFamily: 'Libre Baskerville, serif' }}>
             Frequently Asked Questions
           </h2>
-          <div className="space-y-6">
-            <div className="border-b border-stone pb-4">
-              <h3 className="text-lg font-semibold text-ink-navy mb-2">How far in advance should I book?</h3>
-              <p className="text-muted-foreground">We recommend booking at least 3-6 months in advance for weddings and larger events. However, we can accommodate shorter timelines for smaller gatherings.</p>
-            </div>
-            <div className="border-b border-stone pb-4">
-              <h3 className="text-lg font-semibold text-ink-navy mb-2">Do you provide tastings?</h3>
-              <p className="text-muted-foreground">Yes! We offer complimentary tastings for events over £5,000. For smaller events, there's a small tasting fee that can be applied to your booking.</p>
-            </div>
-            <div className="border-b border-stone pb-4">
-              <h3 className="text-lg font-semibold text-ink-navy mb-2">Can you accommodate dietary restrictions?</h3>
-              <p className="text-muted-foreground">Absolutely. Our chefs are trained to handle all dietary needs, including allergies, intolerances, and special diets. We'll discuss this in detail during our consultation.</p>
-            </div>
-          </div>
+          <Accordion type="single" collapsible className="w-full space-y-2">
+            <AccordionItem value="item-1" className="border-none">
+              <AccordionTrigger className="text-left text-lg font-semibold text-ink-navy hover:text-brass py-4 border-b border-stone-300 hover:border-brass transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                How far in advance should I book?
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-ink-navy leading-relaxed pb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                We recommend booking at least 3-6 months in advance for weddings and larger events. However, we can accommodate shorter timelines for smaller gatherings.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2" className="border-none">
+              <AccordionTrigger className="text-left text-lg font-semibold text-ink-navy hover:text-brass py-4 border-b border-stone-300 hover:border-brass transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Do you provide tastings?
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-ink-navy leading-relaxed pb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Yes! We offer complimentary tastings for events over £5,000. For smaller events, there's a small tasting fee that can be applied to your booking.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3" className="border-none">
+              <AccordionTrigger className="text-left text-lg font-semibold text-ink-navy hover:text-brass py-4 border-b border-stone-300 hover:border-brass transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Can you accommodate dietary restrictions?
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-ink-navy leading-relaxed pb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Absolutely. Our chefs are trained to handle all dietary needs, including allergies, intolerances, and special diets. We'll discuss this in detail during our consultation.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
 

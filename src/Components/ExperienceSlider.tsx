@@ -50,8 +50,7 @@ const ExperienceSlider: React.FC = () => {
           <ul className="experience-menu">
             <li data-target="events" className={activeItem === 'events' ? 'active' : ''} onClick={() => setActiveItem('events')}><span>01</span> Events</li>
             <li data-target="weddings" className={activeItem === 'weddings' ? 'active' : ''} onClick={() => setActiveItem('weddings')}><span>02</span> Weddings</li>
-            <li data-target="partnerships" className={activeItem === 'partnerships' ? 'active' : ''} onClick={() => setActiveItem('partnerships')}><span>03</span> Partnerships</li>
-            <li data-target="about" className={activeItem === 'about' ? 'active' : ''} onClick={() => setActiveItem('about')}><span>04</span> About</li>
+            <li data-target="about" className={activeItem === 'about' ? 'active' : ''} onClick={() => setActiveItem('about')}><span>03</span> About</li>
           </ul>
         </div>
 
@@ -70,14 +69,6 @@ const ExperienceSlider: React.FC = () => {
             <div className="overlay">
               <h3>Beautifully Thoughtful Weddings</h3>
               <p>Making your day unforgettable with care and style.</p>
-            </div>
-          </div>
-
-          <div className={`slide ${activeItem === 'partnerships' ? 'active' : ''}`} id="partnerships">
-            <FadeImage src="/SQUARE_LIGHT_CREAM_INK_NAVY.png" alt="Partnerships" />
-            <div className="overlay">
-              <h3>Strategic Partnerships</h3>
-              <p>We collaborate with top vendors to deliver seamless experiences.</p>
             </div>
           </div>
 

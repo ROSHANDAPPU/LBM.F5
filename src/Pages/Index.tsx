@@ -7,7 +7,6 @@ import Values from "@/Components/Values";
 import Transformation from "@/Components/Transformation";
 import Contact from "@/Components/Contact";
 import Footer from "@/Components/Footer";
-import SocialProof from "@/Components/SocialProof";
 import Testimonials from "@/Components/Testimonials";
 import { Button } from "@/Components/UI/button";
 import { Link } from "react-router-dom";
@@ -62,35 +61,65 @@ const Index = () => {
           {/* Additional required wrapper */}
           <div className="swiper-wrapper" id="swiper-wrapper-68e2710a4619c8a5e" aria-live="off">
             <div className="swiper-slide">
-              <span className="logo-text-large">TATLER</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Dallas_Museum_of_Art_logo.svg.png`} alt="Dallas Museum of Art" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">ROCK MY WEDDING</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Planned_Parenthood_logo_PNG3.png`} alt="Planned Parenthood" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">BRIDES</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/CEDAR.png`} alt="Cedars Union" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">SO YOU'RE GETTING MARRIED</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/southwest-airlines-logo-11530963594nducvm4dqm.png`} alt="Southwest Airlines" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">WHIMSICAL WONDERLAND WEDDINGS</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Dallas-St.-Marks-Lions1-large.png`} alt="St. Mark's Preparatory School" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/thelamplighterschool.png`} alt="Lamplighter School" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/DALLAS ZOO.png`} alt="Dallas Zoo" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/LATINA SOCIAL CLUB.jpg`} alt="Latina Social Club DFW" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/4dwn-red-2-418X100.png`} alt="4DWN Nonprofit" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/The global latin factor podcast.jpeg`} alt="The Global Latin Factor Podcast" className="logo-image" />
             </div>
             {/* Duplicate for continuous loop */}
             <div className="swiper-slide">
-              <span className="logo-text-large">TATLER</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Dallas_Museum_of_Art_logo.svg.png`} alt="Dallas Museum of Art" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">ROCK MY WEDDING</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Planned_Parenthood_logo_PNG3.png`} alt="Planned Parenthood" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">BRIDES</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/CEDAR.png`} alt="Cedars Union" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">SO YOU'RE GETTING MARRIED</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/southwest-airlines-logo-11530963594nducvm4dqm.png`} alt="Southwest Airlines" className="logo-image" />
             </div>
             <div className="swiper-slide">
-              <span className="logo-text-large">WHIMSICAL WONDERLAND WEDDINGS</span>
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/Dallas-St.-Marks-Lions1-large.png`} alt="St. Mark's Preparatory School" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/thelamplighterschool.png`} alt="Lamplighter School" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/DALLAS ZOO.png`} alt="Dallas Zoo" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/LATINA SOCIAL CLUB.jpg`} alt="Latina Social Club DFW" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/4dwn-red-2-418X100.png`} alt="4DWN Nonprofit" className="logo-image" />
+            </div>
+            <div className="swiper-slide">
+              <img src={`${(import.meta as any).env?.BASE_URL || "/"}Trusted by/The global latin factor podcast.jpeg`} alt="The Global Latin Factor Podcast" className="logo-image" />
             </div>
           </div>
           <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -116,8 +145,6 @@ const Index = () => {
       <div>
         <Testimonials />
       </div>
-
-      <SocialProof />
 
       <section
         className={`relative bg-center bg-cover bg-no-repeat text-white text-center py-28 ${isMobile ? 'bg-scroll' : 'bg-fixed'}`}

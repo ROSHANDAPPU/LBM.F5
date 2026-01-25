@@ -7,12 +7,18 @@ import Index from "./Pages/Index";
 import NotFound from "./Pages/NotFound";
 import Catering from "./Pages/Catering";
 import Corporate from "./Pages/Corporate";
+import CorporateCateringMenu from "./Components/CorporateCateringMenu";
+import CulturalGlobalMenu from "./Components/CulturalGlobalMenu";
+import DessertSweetMenu from "./Components/DessertSweetMenu";
+import BuffetMenu from "./Components/BuffetMenu";
 import Events from "./Pages/Events";
 import Menu from "./Pages/Menu";
 import About from "./Pages/About";
 import Gallery from "./Pages/Gallery";
 import OurProcess from "./Pages/OurProcess";
 import BookEvent from "./Pages/BookEvent";
+import BookClass from "./Pages/BookClass";
+import CookingClasses from "./Pages/CookingClasses";
 import SpecialOccasions from "./Pages/SpecialOccasions";
 import SocialEvents from "./Pages/SocialEvents";
 import { useEffect, useState } from "react";
@@ -51,12 +57,18 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/catering" element={<Catering />} />
               <Route path="/corporate"element={<Corporate />} />
+              <Route path="/corporate/menu" element={<CorporateCateringMenu />} />
+              <Route path="/cultural/menu" element={<CulturalGlobalMenu />} />
+              <Route path="/dessert/menu" element={<DessertSweetMenu />} />
+              <Route path="/buffet/menu" element={<BuffetMenu />} />
               <Route path="/events" element={<Events />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/about" element={<About />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/our-process" element={<OurProcess />} />
               <Route path="/book-event" element={<BookEvent />} />
+              <Route path="/book-class" element={<BookClass />} />
+              <Route path="/cooking-classes" element={<CookingClasses />} />
               <Route path="/special-occasions" element={<SpecialOccasions />} />
               <Route path="/social-events" element={<SocialEvents />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

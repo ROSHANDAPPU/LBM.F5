@@ -69,8 +69,8 @@ const OurProcess = () => {
         {/* Right: Image */}
         <div className="md:w-1/2">
           <img
-            src={includedImage}
-            alt="What’s Included"
+            src={`${(import.meta as any).env?.BASE_URL || "/"}whats-included-hero.jpg`}
+            alt="What's Included"
             className="w-full h-auto object-cover rounded-lg shadow-md"
           />
         </div>
@@ -110,7 +110,7 @@ const OurProcess = () => {
                 There's no such thing as a "silly" question!<br />
                 Our team is here to answer any you may have, but here are a few that we often hear.
               </p>
-              <a href="#contact" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <a href="/book-event" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Ask us a question
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
@@ -165,7 +165,7 @@ const OurProcess = () => {
       <CTAPanel
         title="Ready to Get Started?"
         primaryButtonText="Request a Proposal"
-        primaryButtonLink="/contact"
+        primaryButtonLink="/book-event"
         secondaryButtonText="Book a Discovery Call"
         secondaryButtonLink="/contact"
         imageUrl={'/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg'}

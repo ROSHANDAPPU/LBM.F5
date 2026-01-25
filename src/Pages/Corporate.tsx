@@ -7,6 +7,7 @@ import { Button } from "@/Components/UI/button";
 import { useIsMobile } from "@/Hooks/use-mobile";
 import { ChevronRight, Users, ChefHat, Sparkles, MapPin } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/Components/UI/accordion";
+import { Link } from "react-router-dom";
 
 const Corporate = () => {
   const isMobile = useIsMobile();
@@ -412,7 +413,16 @@ const Corporate = () => {
         subtitle="Professional gatherings that impress. We handle the details. You focus on your guests."
         fullWidth={true}
         video="/Public/videos/corporate-hero.mp4"
-        cta1={<Button size="lg" className="text-base font-normal tracking-wide uppercase">Request a Proposal</Button>}
+        cta1={
+          <Button asChild size="lg" className="text-base font-normal tracking-wide uppercase mr-4">
+            <Link to="/book-event">Request a Proposal</Link>
+          </Button>
+        }
+        cta2={
+          <Button asChild size="lg" variant="outline" className="text-base font-normal tracking-wide uppercase border-white text-white hover:bg-white hover:text-ink-navy">
+            <Link to="/corporate/menu">View Full Menu</Link>
+          </Button>
+        }
       />
       <ScrollIndicator />
 
@@ -574,8 +584,8 @@ const Corporate = () => {
                           ))}
                         </div>
                         
-                        <Button className="w-full bg-gradient-to-r from-reserved-burgundy to-darker-burgundy hover:from-darker-burgundy hover:to-reserved-burgundy text-white py-4 text-base font-normal tracking-wide uppercase rounded-2xl transform hover:scale-105 transition-all duration-300 mt-auto">
-                          Request Quote
+                        <Button asChild size="lg" className="w-full bg-reserved-burgundy text-white hover:bg-reserved-burgundy/90 text-base font-normal tracking-wide uppercase mt-auto">
+                          <Link to="/book-event">Request Quote</Link>
                         </Button>
                       </div>
                     </div>
@@ -586,6 +596,9 @@ const Corporate = () => {
           </div>
           
           <div className={`text-center fade-in-up ${corporateSectionVisible ? 'visible' : ''} delay-500`}>
+            <Button asChild size="lg" className="bg-creamy-white bg-opacity-100 text-ink-navy tracking-wider border border-ink-navy/20 shadow-sm hover:bg-stone hover:bg-opacity-50 hover:text-ink-navy transition-all duration-300 ease-in-out uppercase mr-4">
+              <Link to="/corporate/menu">View Full Menu</Link>
+            </Button>
             <Button size="lg" className="bg-creamy-white bg-opacity-100 text-ink-navy tracking-wider border border-ink-navy/20 shadow-sm hover:bg-stone hover:bg-opacity-50 hover:text-ink-navy transition-all duration-300 ease-in-out uppercase">
               View All Services
             </Button>
@@ -652,7 +665,7 @@ const Corporate = () => {
                 There's no such thing as a "silly" question!<br />
                 Our team is here to answer any you may have, but here are a few that we often hear.
               </p>
-              <a href="#contact" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <a href="/book-event" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Ask us a question
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>

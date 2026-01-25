@@ -35,7 +35,7 @@ const Gallery = () => {
         subtitle="A calm, timeless look at the events"
         cta1={
           <Button asChild size="lg">
-            <Link to="/contact">START YOUR EVENT PLAN</Link>
+            <Link to="/book-event">START YOUR EVENT PLAN</Link>
           </Button>
         }
       />
@@ -47,9 +47,9 @@ const Gallery = () => {
         </div>
       </section>
       <CTAPanel
-        title="Loved the look? Let’s design yours."
+        title="Loved the look? Let's design yours."
         primaryButtonText="Request a Proposal"
-        primaryButtonLink="/contact"
+        primaryButtonLink="/book-event"
         imageUrl="/LBM.F5/IMG_6473-scaled.jpeg"
       />
       <Footer />

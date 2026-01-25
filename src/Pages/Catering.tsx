@@ -7,6 +7,7 @@ import { Button } from "@/Components/UI/button";
 import { useIsMobile } from "@/Hooks/use-mobile";
 import { Users, ChefHat, Sparkles, MapPin, ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/Components/UI/accordion";
+import { Link } from "react-router-dom";
 
 const Catering = () => {
   const isMobile = useIsMobile();
@@ -126,7 +127,11 @@ const Catering = () => {
         subtitle="Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table."
         fullWidth={true}
         video="/Public/videos/engagements-and-weddings.mp4"
-        cta1={<Button size="lg" className="text-base font-normal tracking-wide uppercase">Book Your Event</Button>}
+        cta1={
+          <Button asChild size="lg" className="text-base font-normal tracking-wide uppercase">
+            <Link to="/book-event">Book Your Event</Link>
+          </Button>
+        }
       />
       <ScrollIndicator />
 
@@ -323,7 +328,7 @@ const Catering = () => {
               <p className="text-lg text-ink-navy mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Our team is here to answer any you may have, but here are a few that we often hear.
               </p>
-              <a href="#contact" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <a href="/book-event" className="inline-flex items-center text-reserved-burgundy font-semibold text-lg border border-reserved-burgundy px-6 py-3 rounded-full hover:bg-reserved-burgundy hover:text-white transition-colors duration-300 group" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Ask us a question
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>

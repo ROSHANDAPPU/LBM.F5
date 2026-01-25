@@ -8,7 +8,7 @@ const services = [
   {
     title: "Private cooking classes",
     description: "Experience bespoke culinary creations in the comfort of your home with our expert private chefs.",
-    image: culinaryImage,
+    image: `${(import.meta as any).env?.BASE_URL || "/"}chef1.jpg`,
     slug: "/events",
     quickHighlights: [
       "Guest range - 2 -20+",
@@ -38,7 +38,7 @@ const services = [
   {
     title: "Corporate caterings",
     description: "Professional gatherings that impress. We handle the details. You focus on your guests.",
-    image: corporateImage,
+    image: `${(import.meta as any).env?.BASE_URL || "/"}asada-restaurant-greenville-sc-latin-fusion-catering-min.jpg`,
     slug: "/corporate",
     quickHighlights: [
       "Guest range - 10-400",
@@ -68,7 +68,7 @@ const services = [
   {
     title: "Engagements and weddings",
     description: "Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.",
-    image: culinaryImage,
+    image: `${(import.meta as any).env?.BASE_URL || "/"}photo-1555244162-803834f70033_51_2001907-160833407219780.jpeg`,
     slug: "/catering",
     quickHighlights: [
       "Guests: 50–300+",
@@ -122,9 +122,9 @@ const ServiceItem = ({ service, index }: { service: typeof services[0], index: n
         <p className="text-base text-muted-foreground leading-relaxed font-light max-w-prose">
           {service.description}
         </p>
-        <Link to={service.slug}>
+        <Link to="/book-event">
           <Button variant="ghost" size="lg" className="text-base font-normal tracking-wide uppercase text-reserved-burgundy border border-reserved-burgundy bg-transparent hover:bg-reserved-burgundy hover:text-creamy-white">
-            Learn More
+            Book Now
           </Button>
         </Link>
       </div>

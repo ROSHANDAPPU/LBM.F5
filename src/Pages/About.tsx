@@ -3,7 +3,6 @@ import Header from "@/Components/Header";
 import Hero from "@/Components/Hero";
 import Footer from "@/Components/Footer";
 import { Button } from "@/Components/UI/button";
-import Partners from "@/Components/Partners";
 import Testimonials from "@/Components/Testimonials";
 import GalleryGrid from "@/Components/GalleryGrid";
 import CTAPanel from "@/Components/CTAPanel";
@@ -209,23 +208,6 @@ const About = () => {
             <Testimonials />
           </section>
 
-          {/* Partners */}
-          <div className="py-16">
-            <div className="container mx-auto">
-              <h2 className="text-center section-title mb-4 font-serif text-white">Our Partners</h2>
-              <div className="flex justify-center items-center mt-8 space-x-8">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-12 filter grayscale" />
-                <div className="h-12 w-px bg-brass"></div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-12 filter grayscale" />
-                <div className="h-12 w-px bg-brass"></div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" className="h-12 filter grayscale" />
-                <div className="h-12 w-px bg-brass"></div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-12 filter grayscale" />
-                <div className="h-12 w-px bg-brass"></div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" className="h-12 filter grayscale" />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -239,7 +221,7 @@ const About = () => {
       <CTAPanel
         title="Inspired by our story?"
         primaryButtonText="Request a Proposal"
-        primaryButtonLink="/contact"
+        primaryButtonLink="/book-event"
         secondaryButtonText="View Our Work"
         secondaryButtonLink="/gallery"
       />

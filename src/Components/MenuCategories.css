@@ -1,0 +1,142 @@
+/* src/Components/MenuCategories.css */
+
+.menu-categories {
+  padding: 80px 5%;
+  background-color: #fff;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.category-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.category-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-card {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.category-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.best-for {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #d4af37;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.category-overlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.menu-items li {
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.menu-items li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #d4af37;
+}
+
+.view-btn {
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.view-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .category-card {
+    height: 350px;
+  }
+
+  .category-overlay {
+    padding: 30px;
+  }
+
+  .category-overlay h3 {
+    font-size: 1.5rem;
+  }
+
+  .menu-items {
+    font-size: 0.9rem;
+  }
+}
