@@ -1,6 +1,4 @@
 import { Button } from "./UI/button";
-import heroVideoDesktop from "/Public/videos/Hero desktop.mp4";
-import heroVideoMobile from "/Public/videos/hero mobile.mp4";
 import { useIsMobile } from "../Hooks/use-mobile";
 
 interface HeroProps {
@@ -9,33 +7,38 @@ interface HeroProps {
   cta1?: React.ReactNode;
   cta2?: React.ReactNode;
   video?: string;
+  fullWidth?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2, video }) => {
+const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2, video, fullWidth = false }) => {
   const isMobile = useIsMobile();
-  const heroVideo = video || (isMobile ? heroVideoMobile : heroVideoDesktop);
+  const base = (import.meta as any).env?.BASE_URL || "/";
+  const defaultVideo = isMobile ? "videos/hero mobile.mp4" : "videos/Hero desktop.mp4";
+  const source = video || defaultVideo;
+  const normalized = source.replace(/^\/?Public\//, "").replace(/^\//, "");
+  const heroVideo = `${base}${normalized}`;
 
   return (
     <div className="hero-wrapper bg-transparent"
          style={{
            width: '100vw',
-           height: '90vh',
-           paddingTop: '2vh',
-           paddingBottom: '2vh',
+           height: fullWidth ? '100vh' : '90vh',
+           paddingTop: fullWidth ? '0' : '2vh',
+           paddingBottom: fullWidth ? '0' : '2vh',
            display: 'flex',
            flexDirection: 'column',
            justifyContent: 'center',
            alignItems: 'center',
-           marginTop: '40px'
+           marginTop: fullWidth ? '0' : '40px'
          }}
     >
       <div className="hero-video-box"
            style={{
-             maxWidth: '85%',
+             maxWidth: fullWidth ? '100%' : '85%',
              width: '100%',
-             height: '85%',
+             height: fullWidth ? '100%' : '85%',
              position: 'relative',
-             borderRadius: '1rem'
+             borderRadius: fullWidth ? '0' : '1rem'
            }}
       >
         <div className="burgundy-flair" />
@@ -48,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2, video }) => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            borderRadius: '1rem'
+            borderRadius: fullWidth ? '0' : '1rem'
           }}
           src={heroVideo}
         >
@@ -62,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, cta1, cta2, video }) => {
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(245, 245, 220, 0.1)',
-            borderRadius: '1rem',
+            borderRadius: fullWidth ? '0' : '1rem',
             overflow: 'hidden',
           }}
         >

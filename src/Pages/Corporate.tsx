@@ -1,24 +1,20 @@
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 import ScrollIndicator from "@/Components/ScrollIndicator";
-import corporateImage from "@/assets/service-corporate.jpg";
+import Hero from "@/Components/Hero";
+import { Button } from "@/Components/UI/button";
 
 const Corporate = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <div
-        className="relative w-full h-[80vh] bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url(${corporateImage})` }}
-      >
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Corporate Caterings</h1>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light">
-            Professional gatherings that impress. We handle the details. You focus on your guests.
-          </p>
-        </div>
-      </div>
+      <Hero
+        title="Corporate Caterings"
+        subtitle="Professional gatherings that impress. We handle the details. You focus on your guests."
+        fullWidth={true}
+        video="/Public/videos/corporate-hero.mp4"
+        cta1={<Button size="lg" className="mt-8 uppercase tracking-wide">Request a Proposal</Button>}
+      />
       <ScrollIndicator />
 
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-background">

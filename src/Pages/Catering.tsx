@@ -1,24 +1,20 @@
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 import ScrollIndicator from "@/Components/ScrollIndicator";
-import culinaryImage from "@/assets/service-culinary.jpg";
+import Hero from "@/Components/Hero";
+import { Button } from "@/Components/UI/button";
 
 const Catering = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <div
-        className="relative w-full h-[80vh] bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url(${culinaryImage})` }}
-      >
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light mb-4">Engagements and Weddings</h1>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto font-light">
-            Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table.
-          </p>
-        </div>
-      </div>
+      <Hero
+        title="Engagements and Weddings"
+        subtitle="Quality ingredients. Artisanal presentation. From intimate dinners to celebrations, we bring excellence to your table."
+        fullWidth={true}
+        video="/Public/videos/engagements-and-weddings.mp4"
+        cta1={<Button size="lg" className="mt-8 uppercase tracking-wide">Book Your Event</Button>}
+      />
       <ScrollIndicator />
 
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-background">

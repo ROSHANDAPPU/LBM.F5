@@ -35,11 +35,13 @@ const About = () => {
   const [isValuesVisible, setIsValuesVisible] = useState(false);
   const [isGalleryVisible, setIsGalleryVisible] = useState(false);
   const [isTeamVisible, setIsTeamVisible] = useState(false);
+  const [teamMemberVisible, setTeamMemberVisible] = useState<boolean[]>(new Array(teamMembers.length).fill(false));
   const storyRef = useRef<HTMLDivElement>(null);
   const valuesRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
+  const teamMemberRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +61,19 @@ const About = () => {
         const rect = teamRef.current.getBoundingClientRect();
         setIsTeamVisible(rect.top < window.innerHeight && rect.bottom > 0);
       }
+      
+      // Check individual team member visibility
+      teamMemberRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          setTeamMemberVisible(prev => {
+            const newVisible = [...prev];
+            newVisible[index] = isVisible;
+            return newVisible;
+          });
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -165,7 +180,17 @@ const About = () => {
             </div>
             <div className="mt-16">
               {teamMembers.map((member, index) => (
-                <div key={index} className="flex flex-col md:flex-row items-center even:md:flex-row-reverse mb-20 last:mb-0">
+                <div 
+                  key={index} 
+                  ref={el => teamMemberRefs.current[index] = el}
+                  className={`flex flex-col md:flex-row items-center even:md:flex-row-reverse mb-20 last:mb-0 transition-all duration-700 ease-out ${
+                    teamMemberVisible[index] 
+                      ? 'opacity-100 translate-x-0' 
+                      : index % 2 === 0 
+                        ? 'opacity-0 -translate-x-20' 
+                        : 'opacity-0 translate-x-20'
+                  }`}
+                >
                   <div className="md:w-1/2">
                     <img src={`${member.image}&w=800&h=800`} alt={member.name} className="w-full h-full object-cover" />
                   </div>
@@ -217,7 +242,6 @@ const About = () => {
         primaryButtonLink="/contact"
         secondaryButtonText="View Our Work"
         secondaryButtonLink="/gallery"
-        imageUrl={'/Courtey_Jon_McNielPhotography_Photocreditneeded_08.17-46-scaled.jpg'}
       />
       <Footer />
     </div>
