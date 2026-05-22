@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 
 const DessertSweetMenu = () => {
-  const [hovered, setHovered] = useState(null);
+  const [heroVisible, setHeroVisible] = useState(false);
   const { scrollYProgress } = useScroll();
-  
-  // Parallax effect: items move up at different speeds
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   // Interactive Mouse Tracking for Floating Cards
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
@@ -26,213 +28,234 @@ const DessertSweetMenu = () => {
     x.set(0);
     y.set(0);
   };
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
   const items = [
     { 
       id: '01', 
       title: "Mini Desserts", 
-      desc: "Bite-sized elegance for effortless mingling.",
+      desc: "Sophisticated bite-sized sweetness for effortless socializing.",
       img: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&q=80",
-      details: ["Macarons", "Petite Fours", "Tartlets", "Mini Cheesecakes", "Chocolate Truffles"]
+      details: ["Premium Macarons", "Petite Fours", "Artisan Tartlets", "Gourmet Mini Cheesecakes", "Rich Chocolate Truffles"]
     },
     { 
       id: '02', 
       title: "Dessert Bars", 
-      desc: "Interactive stations with curated sweet pairings.",
+      desc: "Interactive curated sweet stations with exquisite food pairings.",
       img: "https://images.unsplash.com/photo-1564355808539-22fda35bed61?w=400&q=80",
-      details: ["Donut Walls", "Gelato Stations", "Chocolate Fountains", "Candy Buffets", "S'mores Stations"]
+      details: ["Artisan Donut Walls", "Craft Gelato Stations", "Luxury Chocolate Fountains", "Gourmet Candy Stations", "S'mores Flambé Stations"]
     },
     { 
       id: '03', 
       title: "Edible Art", 
-      desc: "Custom-sculpted sweets tailored to your event theme.",
+      desc: "Bespoke custom-sculpted sweets tailored perfectly to your theme.",
       img: "https://images.unsplash.com/photo-1578982947148-285d2c9f2d57?w=400&q=80",
-      details: ["Custom Logo Cookies", "Sugar Sculptures", "Hand-Painted Cakes", "Chocolate Art", "Isomalt Showpieces"]
+      details: ["Personalized Sugar Work", "Intricate Fondant Accents", "Hand-Painted Cake Tiers", "Chocolatier Art Pieces", "Custom Pastry Sculptures"]
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      <Header />
+
       {/* Hero Section */}
-      <div className="relative h-[50vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1600&q=80"
-            alt="Dessert & Sweet Menus"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-pink-100/80 via-pink-50/40 to-transparent"></div>
-        </div>
-        <div className="relative h-full flex items-center justify-center text-center">
+      <div 
+        className="relative flex items-center justify-center text-center overflow-hidden"
+        style={{
+          height: '70vh',
+          marginTop: '80px',
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1600&q=80")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div 
+          className="relative z-10 transition-all duration-1000 ease-out"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
+          }}
+        >
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl md:text-6xl font-light mb-6 text-gray-800" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Dessert & <span className="italic">Sweet Menus</span>
+            <p className="text-sm tracking-[0.3em] text-[#C4A46A] uppercase font-bold mb-4">
+              Best for: Receptions, add-ons
+            </p>
+            <h1 className="text-4xl md:text-6xl font-light text-white mb-6 animate-fade-in" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+              Dessert & Sweet Menus
             </h1>
-            <p className="text-xl md:text-2xl font-light text-gray-700">
-              Receptions & Add-ons
+            <p className="text-xl md:text-2xl font-light text-white/95 max-w-2xl mx-auto">
+              Exquisite confections and custom sweet masterpieces styled for beautiful occasions.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Breadcrumb */}
-      <div className="py-5 px-10 text-sm">
-        <Link to="/menu" className="text-pink-600 hover:underline">
-          ← Back to All Menus
+      {/* Breadcrumb - Starts with top margin of 27px as requested */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8" style={{ marginTop: '27px' }}>
+        <Link 
+          to="/menu" 
+          className="inline-flex items-center text-sm font-semibold text-[#5B2E34] hover:text-[#C4A46A] transition-colors hover:underline"
+        >
+          ← BACK TO ALL MENUS
         </Link>
       </div>
 
-      {/* The Floating Canvas */}
+      {/* The Floating Canvas (Redesigned with brand styling) */}
       <motion.section 
-        className="bg-[#FAF9F6] py-32 overflow-hidden relative"
+        className="bg-gradient-to-b from-background to-[#C9C3BA]/15 py-32 overflow-hidden relative border-b border-[#C9C3BA]/30"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="text-center mb-20 relative z-10">
-          <h2 className="text-7xl text-[#7a3043]" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Sweet <span className="italic text-gray-400">&</span> Edible Art
+        <div className="text-center mb-24 relative z-10 px-6">
+          <h2 className="text-4xl md:text-6xl text-[#5B2E34] font-light" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+            Sweet <span className="italic text-[#C4A46A] font-light">&</span> Edible Art
           </h2>
-          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-            A celebration of the finishing touch—custom sweets designed for visual impact and refined flavor.
+          <p className="text-base text-foreground/80 mt-4 max-w-2xl mx-auto font-light leading-relaxed">
+            A beautiful celebration of concluding touches—custom confectioneries designed for high visual statement and rich flavor palettes.
           </p>
         </div>
 
-        <div className="flex justify-around items-center px-10">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-8 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
           {/* Floating Card 1: Mini Desserts */}
           <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             style={{ x: mouseX, y: mouseY }}
-            className="w-72 h-96 bg-white p-4 shadow-xl rounded-sm rotate-[-3deg]"
+            className="w-80 h-[460px] bg-[#FFFDF9] p-5 shadow-soft hover:shadow-md rounded-lg border border-[#C9C3BA]/40 rotate-[-1.5deg] flex flex-col justify-between"
           >
-            <div className="h-2/3 bg-gray-200 overflow-hidden rounded">
-              <img 
-                src={items[0].img} 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" 
-                alt="Mini Desserts"
-              />
-            </div>
-            <div className="pt-6 text-center">
-              <h3 className="text-2xl text-[#7a3043]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Mini Desserts
-              </h3>
-              <p className="text-xs uppercase tracking-tighter text-gray-500 mt-2">
-                Custom Sweets & Edible Art
-              </p>
-              <div className="mt-4 space-y-1">
-                {items[0].details.slice(0, 3).map((detail, index) => (
-                  <div key={index} className="text-xs text-gray-400">
-                    {detail}
-                  </div>
-                ))}
+            <div>
+              <div className="h-52 bg-[#C9C3BA]/20 overflow-hidden rounded border border-[#C9C3BA]/30">
+                <img 
+                  src={items[0].img} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" 
+                  alt="Mini Desserts"
+                />
               </div>
+              <div className="pt-6 text-center">
+                <h3 className="text-2xl text-[#5B2E34]" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                  Mini Desserts
+                </h3>
+                <p className="text-[10px] tracking-widest text-[#C4A46A] mt-1 font-semibold uppercase">
+                  Bite-Sized Confections
+                </p>
+              </div>
+            </div>
+            <div className="space-y-1 text-center pb-4">
+              {items[0].details.slice(0, 3).map((detail, index) => (
+                <div key={index} className="text-xs text-foreground/75 font-light">
+                  {detail}
+                </div>
+              ))}
             </div>
           </motion.div>
 
           {/* Floating Card 2: Dessert Bars */}
           <motion.div 
-            animate={{ y: [0, 25, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            animate={{ y: [0, 20, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             style={{ x: mouseX, y: mouseY }}
-            className="w-72 h-96 bg-white p-4 shadow-xl rounded-sm rotate-[2deg] mt-20"
+            className="w-80 h-[460px] bg-[#FFFDF9] p-5 shadow-soft hover:shadow-md rounded-lg border border-[#C9C3BA]/40 rotate-[1.5deg] lg:mt-12 flex flex-col justify-between"
           >
-            <div className="h-2/3 bg-gray-200 overflow-hidden rounded">
-              <img 
-                src={items[1].img} 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" 
-                alt="Dessert Bars"
-              />
-            </div>
-            <div className="pt-6 text-center">
-              <h3 className="text-2xl text-[#7a3043]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Dessert Bars
-              </h3>
-              <p className="text-xs uppercase tracking-tighter text-gray-500 mt-2">
-                Interactive Sweet Stations
-              </p>
-              <div className="mt-4 space-y-1">
-                {items[1].details.slice(0, 3).map((detail, index) => (
-                  <div key={index} className="text-xs text-gray-400">
-                    {detail}
-                  </div>
-                ))}
+            <div>
+              <div className="h-52 bg-[#C9C3BA]/20 overflow-hidden rounded border border-[#C9C3BA]/30">
+                <img 
+                  src={items[1].img} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" 
+                  alt="Dessert Bars"
+                />
               </div>
+              <div className="pt-6 text-center">
+                <h3 className="text-2xl text-[#5B2E34]" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                  Dessert Bars
+                </h3>
+                <p className="text-[10px] tracking-widest text-[#C4A46A] mt-1 font-semibold uppercase">
+                  Interactive Sweet Stations
+                </p>
+              </div>
+            </div>
+            <div className="space-y-1 text-center pb-4">
+              {items[1].details.slice(0, 3).map((detail, index) => (
+                <div key={index} className="text-xs text-foreground/75 font-light">
+                  {detail}
+                </div>
+              ))}
             </div>
           </motion.div>
 
           {/* Floating Card 3: Edible Art */}
           <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             style={{ x: mouseX, y: mouseY }}
-            className="w-72 h-96 bg-white p-4 shadow-xl rounded-sm rotate-[-1deg]"
+            className="w-80 h-[460px] bg-[#FFFDF9] p-5 shadow-soft hover:shadow-md rounded-lg border border-[#C9C3BA]/40 rotate-[-0.5deg] flex flex-col justify-between"
           >
-            <div className="h-2/3 bg-gray-200 overflow-hidden rounded">
-              <img 
-                src={items[2].img} 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" 
-                alt="Edible Art"
-              />
-            </div>
-            <div className="pt-6 text-center">
-              <h3 className="text-2xl text-[#7a3043]" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Edible Art
-              </h3>
-              <p className="text-xs uppercase tracking-tighter text-gray-500 mt-2">
-                Custom Sculpted Sweets
-              </p>
-              <div className="mt-4 space-y-1">
-                {items[2].details.slice(0, 3).map((detail, index) => (
-                  <div key={index} className="text-xs text-gray-400">
-                    {detail}
-                  </div>
-                ))}
+            <div>
+              <div className="h-52 bg-[#C9C3BA]/20 overflow-hidden rounded border border-[#C9C3BA]/30">
+                <img 
+                  src={items[2].img} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" 
+                  alt="Edible Art"
+                />
               </div>
+              <div className="pt-6 text-center">
+                <h3 className="text-2xl text-[#5B2E34]" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                  Edible Art
+                </h3>
+                <p className="text-[10px] tracking-widest text-[#C4A46A] mt-1 font-semibold uppercase">
+                  Bespoke Sugar Design
+                </p>
+              </div>
+            </div>
+            <div className="space-y-1 text-center pb-4">
+              {items[2].details.slice(0, 3).map((detail, index) => (
+                <div key={index} className="text-xs text-foreground/75 font-light">
+                  {detail}
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
 
-        {/* Floating Background Elements */}
+        {/* Floating Brand-Aligned Background Circles */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
             animate={{ 
-              x: [0, 30, 0], 
-              y: [0, -30, 0],
-              rotate: [0, 5, 0]
+              x: [0, 20, 0], 
+              y: [0, -20, 0],
+              rotate: [0, 4, 0]
             }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-20 w-16 h-16 bg-pink-200 rounded-full opacity-30"
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-20 w-16 h-16 bg-[#E2B9B3] rounded-full opacity-20"
           />
           <motion.div
             animate={{ 
-              x: [0, -40, 0], 
-              y: [0, 20, 0],
-              rotate: [0, -8, 0]
+              x: [0, -25, 0], 
+              y: [0, 15, 0],
+              rotate: [0, -6, 0]
             }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-32 right-32 w-24 h-24 bg-purple-200 rounded-full opacity-25"
+            transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-32 right-32 w-24 h-24 bg-[#98A989] rounded-full opacity-20"
           />
           <motion.div
             animate={{ 
-              x: [0, 25, 0], 
-              y: [0, 25, 0],
-              rotate: [0, 3, 0]
+              x: [0, 15, 0], 
+              y: [0, 15, 0],
+              rotate: [0, 2, 0]
             }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute top-1/2 right-1/4 w-20 h-20 bg-yellow-200 rounded-full opacity-20"
+            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-1/2 right-1/4 w-20 h-20 bg-[#F5F5DC] rounded-full opacity-30"
           />
         </div>
       </motion.section>
 
-      {/* Sweet Features Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-[#fff5f7] to-white">
+      {/* Sweet Features Section (Redesigned with brand styling) */}
+      <section className="py-24 px-6 md:px-8 bg-[#FFFDF9]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-light mb-4 text-gray-800" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h3 className="text-3xl md:text-4xl font-light text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
               Sweet Features
             </h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-pink-300 mx-auto"></div>
+            <div className="w-24 h-[1px] bg-[#C4A46A] mx-auto"></div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -240,60 +263,62 @@ const DessertSweetMenu = () => {
               { 
                 name: "Custom Themes", 
                 icon: "🎨", 
-                description: "Personalized designs matching your event colors and branding",
-                color: "bg-pink-100"
+                description: "Personalized layouts and textures composed to align with your theme and color palette.",
+                color: "bg-[#E2B9B3]/25"
               },
               { 
-                name: "Dietary Options", 
+                name: "Dietary Inclusion", 
                 icon: "🌱", 
-                description: "Gluten-free, vegan, and allergen-friendly alternatives",
-                color: "bg-green-100"
+                description: "Gluten-free organic options, vegan treats, and allergen-safe bespoke menu selections.",
+                color: "bg-[#98A989]/25"
               },
               { 
-                name: "Interactive Stations", 
+                name: "Interactive Experiences", 
                 icon: "✨", 
-                description: "Live dessert stations and DIY sweet experiences",
-                color: "bg-purple-100"
+                description: "On-site action stations, hot-pot melting experiences, and custom confectionery boards.",
+                color: "bg-[#F5F5DC]/60 border border-[#C9C3BA]/40"
               }
             ].map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow"
+                transition={{ delay: index * 0.15 }}
+                className="text-center p-8 rounded-xl bg-background border border-[#C9C3BA]/30 shadow-soft hover:shadow-md transition-shadow"
               >
-                <div className={`w-20 h-20 ${feature.color} rounded-full mx-auto mb-4 flex items-center justify-center text-3xl`}>
+                <div className={`w-16 h-16 ${feature.color} rounded-full mx-auto mb-6 flex items-center justify-center text-2xl`}>
                   {feature.icon}
                 </div>
-                <h4 className="text-xl font-serif mb-2 text-gray-800">{feature.name}</h4>
-                <p className="text-gray-600">{feature.description}</p>
+                <h4 className="text-xl font-normal text-[#5B2E34] mb-2" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>{feature.name}</h4>
+                <p className="text-foreground/80 font-light text-sm leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <div className="bg-white rounded-xl shadow-lg p-12 text-center mt-16 max-w-4xl mx-auto mb-20">
-        <h3 className="text-3xl font-light mb-4 text-gray-800" style={{ fontFamily: 'Playfair Display, serif' }}>
-          Ready to Add Sweetness?
+      {/* Elegant Contact CTA Panel */}
+      <div className="bg-[#FFFDF9] border border-[#C4A46A]/20 rounded-2xl shadow-soft p-12 text-center mt-16 max-w-4xl mx-auto mb-24 px-6 md:px-8">
+        <h3 className="text-3xl font-light text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+          Add Curated Sweetness
         </h3>
-        <p className="text-lg text-gray-600 mb-8">
-          Let's create custom desserts that make your event unforgettable
+        <p className="text-lg text-foreground/80 mb-8 font-light max-w-2xl mx-auto">
+          Contact our artisan culinary designers today to sketch out custom sweet boards or interactive bars for your reception.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             to="/book-event"
-            className="inline-flex items-center justify-center px-8 py-4 bg-pink-500 text-white font-medium tracking-wide hover:bg-pink-600 transition-colors duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#5B2E34] text-[#F5F5DC] font-medium tracking-wider hover:bg-[#5B2E34]/90 transition-all rounded shadow-soft uppercase text-sm"
           >
-            Request a Quote
+            Request a Proposal
           </Link>
-          <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-pink-500 text-pink-500 font-medium tracking-wide hover:bg-pink-500 hover:text-white transition-colors duration-300">
+          <button className="inline-flex items-center justify-center px-8 py-4 border border-[#5B2E34] text-[#5B2E34] hover:bg-[#5B2E34] hover:text-white transition-all rounded uppercase text-sm font-medium">
             Schedule Tasting
           </button>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

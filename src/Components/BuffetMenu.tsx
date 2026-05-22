@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 
 interface BuffetItem {
   id: number;
@@ -14,90 +16,119 @@ const buffetData: BuffetItem[] = [
   { 
     id: 1, 
     title: "Protein Selection", 
-    details: "Carved roasts & signature poultry", 
+    details: "Artisanal carved roasts & signature seafoods", 
     image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80",
-    items: ["Prime Rib Carving Station", "Herb-Crusted Salmon", "Chicken Marsala", "Pork Tenderloin", "Grilled Lamb Chops"]
+    items: ["Prime Rib Carving Station", "Herb-Crusted Salmon Platter", "Chicken Marsala reduction", "Roasted Pork Tenderloin", "Grilled Lamb Chop board"]
   },
   { 
     id: 2, 
     title: "Vegetarian Harvest", 
-    details: "Seasonal grains & garden delicacies", 
+    details: "Organic seasonal grains & local vegetable plates", 
     image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80",
-    items: ["Wild Mushroom Risotto", "Stuffed Bell Peppers", "Quinoa Salad", "Grilled Vegetable Platter", "Caprese Tower"]
+    items: ["Wild Mushroom Cream Risotto", "Heirloom Stuffed Bell Peppers", "Toasted Walnut Quinoa Salad", "Grilled Farmers Market Board", "Mozzarella & Caprese Tower"]
   },
   { 
     id: 3, 
     title: "Grand Sides", 
-    details: "Artisanal breads & roasted roots", 
+    details: "Warm artisanal breads & roasted farm roots", 
     image: "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=600&q=80",
-    items: ["Garlic Mashed Potatoes", "Roasted Seasonal Vegetables", "Artisan Bread Basket", "Caesar Salad", "Macaroni & Cheese Bar"]
+    items: ["Roasted Garlic Mashed Potatoes", "Honey-Glazed Seasonal Roots", "Artisan Warm Sourdough Basket", "Classic Organic Caesar Salad", "Luxury Four-Cheese Macaroni"]
   },
 ];
 
 const BuffetMenu: React.FC = () => {
+  const [heroVisible, setHeroVisible] = useState(false);
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      <Header />
+
       {/* Hero Section */}
-      <div className="relative h-[50vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1600&q=80"
-            alt="Buffet Experience"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-        <div className="relative h-full flex items-center justify-center text-center text-white">
+      <div 
+        className="relative flex items-center justify-center text-center overflow-hidden"
+        style={{
+          height: '70vh',
+          marginTop: '80px',
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1600&q=80")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div 
+          className="relative z-10 transition-all duration-1000 ease-out"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
+          }}
+        >
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl md:text-6xl font-light mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Buffet <span className="italic">Experience</span>
+            <p className="text-sm tracking-[0.3em] text-[#C4A46A] uppercase font-bold mb-4">
+              Best for: Large groups, celebrations
+            </p>
+            <h1 className="text-4xl md:text-6xl font-light text-white mb-6 animate-fade-in" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+              Buffet Experience
             </h1>
-            <p className="text-xl md:text-2xl font-light opacity-90">
-              Large Groups & Celebrations
+            <p className="text-xl md:text-2xl font-light text-white/95 max-w-2xl mx-auto">
+              Grand banquet spreads, multiple hot entrées, and signature sides composed for celebratory dining.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Breadcrumb */}
-      <div className="py-5 px-10 text-sm">
-        <Link to="/menu" className="text-brass hover:underline">
-          ← Back to All Menus
+      {/* Breadcrumb - Starts with top margin of 27px as requested */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8" style={{ marginTop: '27px' }}>
+        <Link 
+          to="/menu" 
+          className="inline-flex items-center text-sm font-semibold text-[#5B2E34] hover:text-[#C4A46A] transition-colors hover:underline"
+        >
+          ← BACK TO ALL MENUS
         </Link>
       </div>
 
-      {/* The Grand Spread */}
-      <section className="bg-ink-navy py-32 px-6 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+      {/* The Grand Spread Stack Section (Redesigned with brand styling) */}
+      <section className="bg-[#5B2E34] py-32 px-6 overflow-hidden relative border-y border-[#C4A46A]/20 mt-8">
+        {/* Gold overlay elements to align with premium brand aesthetics */}
+        <div className="gold-flair" />
+        
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20 relative z-10">
           
           {/* Left: Interactive 3D Stack */}
-          <div className="relative w-full lg:w-1/2 h-[500px] flex justify-center items-center">
+          <div className="relative w-full lg:w-1/2 h-[480px] flex justify-center items-center">
             {buffetData.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ x: 0, rotate: 0, opacity: 0 }}
                 whileInView={{ 
                   x: (index - 1) * 60, // Fans them out
-                  rotate: (index - 1) * 10, 
+                  rotate: (index - 1) * 8, 
                   opacity: 1 
                 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -20, rotate: 0, zIndex: 50, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 100, delay: index * 0.2 }}
-                className="absolute w-72 h-[450px] bg-light-cream rounded-lg shadow-2xl p-4 cursor-pointer origin-bottom"
+                whileHover={{ y: -20, rotate: 0, zIndex: 50, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 100, delay: index * 0.15 }}
+                className="absolute w-72 h-[440px] bg-[#FFFDF9] rounded-lg shadow-2xl p-5 cursor-pointer origin-bottom border border-[#C4A46A]/20"
                 style={{ zIndex: index }}
               >
-                <div className="h-2/3 w-full bg-gray-200 rounded-md overflow-hidden mb-6">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+                <div className="h-48 w-full bg-[#C9C3BA]/20 rounded-md overflow-hidden mb-6 border border-[#C9C3BA]/40">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                  />
                 </div>
-                <h4 className="text-xl text-ink-navy" style={{ fontFamily: 'Playfair Display, serif' }}>{item.title}</h4>
-                <p className="text-xs text-gray-500 uppercase tracking-widest mt-2">
+                <h4 className="text-xl text-[#5B2E34] font-normal" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>{item.title}</h4>
+                <p className="text-[10px] tracking-widest text-[#C4A46A] uppercase font-semibold mt-1">
                   {item.details}
                 </p>
                 <div className="mt-4 space-y-1">
                   {item.items.slice(0, 3).map((menuItem, itemIndex) => (
-                    <div key={itemIndex} className="text-xs text-gray-400 flex items-center gap-2">
-                      <span className="w-1 h-1 bg-brass rounded-full"></span>
+                    <div key={itemIndex} className="text-xs text-foreground/80 flex items-center gap-2 font-light">
+                      <span className="w-1 h-1 bg-[#C4A46A] rounded-full"></span>
                       {menuItem}
                     </div>
                   ))}
@@ -109,64 +140,64 @@ const BuffetMenu: React.FC = () => {
           {/* Right: Content & Call to Action */}
           <div className="w-full lg:w-1/2 text-white">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-brass text-xs tracking-[0.4em] uppercase font-bold">
-                Large Groups & Celebrations
+              <span className="text-[#C4A46A] text-xs tracking-[0.4em] uppercase font-bold">
+                Timeless Culinary spreads
               </span>
-              <h2 className="text-6xl mt-6 mb-8 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Buffet <span className="italic text-blue-200">Experience</span>
+              <h2 className="text-4xl md:text-5xl mt-4 mb-8 leading-tight font-light" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                The Buffet <span className="italic text-[#C4A46A] font-light">Feast</span>
               </h2>
               
-              <ul className="space-y-6 mb-12">
+              <ul className="space-y-6 mb-12 font-light text-white/90">
                 <li className="flex items-center gap-4 border-b border-white/10 pb-4">
-                  <span className="w-2 h-2 bg-brass rotate-45" />
-                  <span className="text-lg">Multiple Entrées & Signature Sides</span>
+                  <span className="w-2 h-2 bg-[#C4A46A] rotate-45" />
+                  <span className="text-lg">Multiple Hand-Carved Entrées & Organic Sides</span>
                 </li>
                 <li className="flex items-center gap-4 border-b border-white/10 pb-4">
-                  <span className="w-2 h-2 bg-brass rotate-45" />
-                  <span className="text-lg">Vegetarian & Protein-First Options</span>
+                  <span className="w-2 h-2 bg-[#C4A46A] rotate-45" />
+                  <span className="text-lg">Dietary-Conscious & Vegetarian Hot Trays</span>
                 </li>
                 <li className="flex items-center gap-4 border-b border-white/10 pb-4">
-                  <span className="w-2 h-2 bg-brass rotate-45" />
-                  <span className="text-lg">Dedicated Dessert & Sweet Stations</span>
+                  <span className="w-2 h-2 bg-[#C4A46A] rotate-45" />
+                  <span className="text-lg">Styled Sweet Tables & Interactive Action Bars</span>
                 </li>
               </ul>
 
               <div className="flex gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05, backgroundColor: "#FAF9F6", color: "#0A1128" }}
-                  className="px-10 py-5 border-2 border-light-cream text-xs tracking-[0.3em] font-bold transition-all uppercase"
-                >
-                  View Full Menu
-                </motion.button>
                 <Link 
                   to="/book-event"
-                  className="px-10 py-5 bg-brass text-ink-navy text-xs tracking-[0.3em] font-bold hover:bg-light-cream transition-all uppercase"
+                  className="px-8 py-4 bg-[#C4A46A] text-[#5B2E34] text-xs tracking-[0.2em] font-bold hover:bg-white transition-all uppercase rounded shadow-md"
                 >
-                  Get Quote
+                  Request a Quote
                 </Link>
+                <a 
+                  href="#complete-offerings"
+                  className="px-8 py-4 border border-white/40 text-white text-xs tracking-[0.2em] font-bold hover:bg-white hover:text-[#5B2E34] transition-all uppercase rounded text-center"
+                >
+                  View Menu List
+                </a>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Background Decorative Text */}
+        {/* Decorative Background Text */}
         <div className="absolute -bottom-20 -left-10 opacity-[0.03] pointer-events-none">
-          <h1 className="text-[20rem] font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>FEAST</h1>
+          <h1 className="text-[20rem] font-bold" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>FEAST</h1>
         </div>
       </section>
 
-      {/* Detailed Menu Sections */}
-      <section className="py-20 px-6 bg-light-cream">
+      {/* Detailed Menu Sections (Redesigned with brand styling) */}
+      <section id="complete-offerings" className="py-24 px-6 md:px-8 bg-[#FFFDF9] scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-light mb-4 text-ink-navy" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h3 className="text-3xl md:text-4xl font-light text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
               Complete Buffet Offerings
             </h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-brass to-brass/50 mx-auto"></div>
+            <div className="w-24 h-[1px] bg-[#C4A46A] mx-auto"></div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -175,21 +206,21 @@ const BuffetMenu: React.FC = () => {
                 key={category.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white rounded-lg shadow-lg p-8"
+                transition={{ delay: index * 0.15 }}
+                className="bg-background rounded-xl border border-[#C9C3BA]/30 p-8 shadow-soft"
               >
-                <div className="w-16 h-16 bg-brass rounded-full flex items-center justify-center text-2xl font-bold text-white mb-6">
+                <div className="w-12 h-12 bg-[#5B2E34] rounded-full flex items-center justify-center text-lg font-bold text-[#F5F5DC] mb-6 shadow-sm">
                   {category.id}
                 </div>
-                <h4 className="text-2xl font-light text-ink-navy mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h4 className="text-2xl font-normal text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
                   {category.title}
                 </h4>
-                <p className="text-gray-600 mb-6">{category.details}</p>
-                <div className="space-y-2">
+                <p className="text-[#C4A46A] text-xs font-semibold uppercase tracking-wider mb-6">{category.details}</p>
+                <div className="space-y-3">
                   {category.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-center gap-3">
-                      <span className="w-2 h-2 bg-brass rounded-full"></span>
-                      <span className="text-sm text-gray-700">{item}</span>
+                      <span className="w-1.5 h-1.5 bg-[#C4A46A] rounded-full"></span>
+                      <span className="text-sm text-foreground/85 font-light">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -199,26 +230,28 @@ const BuffetMenu: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <div className="bg-ink-navy rounded-xl shadow-lg p-12 text-center mt-16 max-w-4xl mx-auto mb-20">
-        <h3 className="text-3xl font-light mb-4 text-light-cream" style={{ fontFamily: 'Playfair Display, serif' }}>
-          Ready for a Grand Feast?
+      {/* Elegant Contact CTA Panel */}
+      <div className="bg-[#FFFDF9] border border-[#C4A46A]/20 rounded-2xl shadow-soft p-12 text-center mt-16 max-w-4xl mx-auto mb-24 px-6 md:px-8">
+        <h3 className="text-3xl font-light text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+          Schedule a Grand Feast
         </h3>
-        <p className="text-lg text-gray-300 mb-8">
-          Let's create a memorable buffet experience for your celebration
+        <p className="text-lg text-foreground/80 mb-8 font-light max-w-2xl mx-auto">
+          Contact our specialized planners today to co-create a perfect, abundant buffet progression for your guests.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             to="/book-event"
-            className="inline-flex items-center justify-center px-8 py-4 bg-brass text-ink-navy font-medium tracking-wide hover:bg-light-cream transition-colors duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#5B2E34] text-[#F5F5DC] font-medium tracking-wider hover:bg-[#5B2E34]/90 transition-all rounded shadow-soft uppercase text-sm"
           >
-            Request a Quote
+            Request a Proposal
           </Link>
-          <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-brass text-brass font-medium tracking-wide hover:bg-brass hover:text-ink-navy transition-colors duration-300">
+          <button className="inline-flex items-center justify-center px-8 py-4 border border-[#5B2E34] text-[#5B2E34] hover:bg-[#5B2E34] hover:text-white transition-all rounded uppercase text-sm font-medium">
             Schedule Consultation
           </button>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

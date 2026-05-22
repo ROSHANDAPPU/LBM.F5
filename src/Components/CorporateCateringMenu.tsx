@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
 
 const CorporateCateringMenu = () => {
-  const [visible, setVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // 3D Tilt Logic for Hero Card
@@ -11,8 +13,12 @@ const CorporateCateringMenu = () => {
   const y = useMotionValue(0);
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -32,77 +38,77 @@ const CorporateCateringMenu = () => {
   const menuCategories = [
     {
       icon: "☕",
-      title: "Executive Breakfast",
-      description: "Start your day right with energizing morning selections",
+      title: "Executive Breakfast Spread",
+      description: "Start your day with energizing and beautifully arranged morning selections",
       items: [
         {
           name: "Continental Breakfast Spread",
           price: "$18/person",
-          description: "Fresh pastries, seasonal fruit, yogurt parfaits, artisan coffee and tea service. Perfect for early morning meetings.",
-          details: ["Min. 10 guests", "Setup included"],
+          description: "Freshly baked artisan pastries, seasonal berry bowls, Greek yogurt parfaits with local honey, selection of premium coffee and organic tea service.",
+          details: ["Min. 10 guests", "Full Setup Included"],
           dietary: ["V", "GF"]
         },
         {
           name: "Power Breakfast Buffet",
           price: "$26/person",
-          description: "Scrambled eggs, breakfast meats, roasted potatoes, fresh fruit, pastries, and premium coffee bar with oat milk alternatives.",
-          details: ["Hot service", "2-hour setup"],
+          description: "Fluffy scrambled farm eggs, house-cured breakfast meats, garlic-roasted potatoes, seasonal fruits, assortment of pastries, and a premium espresso bar.",
+          details: ["Hot Service", "2-hour Setup"],
           dietary: ["GF"]
         },
         {
-          name: "Healthy Start Station",
+          name: "Healthy Start Wellness Station",
           price: "$22/person",
-          description: "Overnight oats bar, açai bowls, green smoothies, avocado toast station, and cold-pressed juice selection.",
-          details: ["Build-your-own", "Wellness focused"],
-          dietary: ["VG", "GF", "NF"]
+          description: "Overnight chia seed pudding, customized açai bowl station, organic green juices, artisan avocado toast bar with heirloom tomatoes, and cold-pressed juice blends.",
+          details: ["Build-Your-Own", "Wellness Focused"],
+          dietary: ["VG", "GF"]
         }
       ]
     },
     {
       icon: "🥗",
       title: "Boxed Lunches & Working Meals",
-      description: "Convenient, elegant individual portions for busy professionals",
+      description: "Convenient, gourmet individual portions designed for seamless corporate meetings",
       items: [
         {
-          name: "Classic Boxed Lunch",
+          name: "Classic Gourmet Boxed Lunch",
           price: "$16/box",
-          description: "Choice of sandwich or wrap, side salad, chips, fresh fruit, dessert cookie, and bottled beverage. Individually packaged for hygiene and convenience.",
-          details: ["5 protein options", "Eco packaging"],
+          description: "Your choice of premium signature sandwich or artisan wrap, baby field greens salad, kettle chips, fresh whole fruit, and our signature sea-salt chocolate chip cookie.",
+          details: ["Individually Packaged", "Eco-Friendly Boxes"],
           dietary: []
         },
         {
-          name: "Gourmet Salad Bowl",
+          name: "Artisan Salad Bowl",
           price: "$19/box",
-          description: "Build-your-own premium salad with grilled protein, artisan greens, roasted vegetables, house-made dressing, and artisan bread.",
-          details: ["Customizable", "Fresh daily"],
+          description: "Hand-selected mixed greens, grilled chicken or tofu, roasted root vegetables, candied walnuts, goat cheese, with house-made balsamic vinaigrette.",
+          details: ["Customizable Proteins", "Fresh Daily"],
           dietary: ["V", "GF"]
         },
         {
-          name: "Executive Bento Box",
+          name: "Executive Bento Selection",
           price: "$24/box",
-          description: "Elevated presentation with protein centerpiece, two seasonal sides, artisan accompaniments, and premium dessert. Impressive for client meetings.",
-          details: ["Premium tier", "Elegant presentation"],
+          description: "An elegant presentation featuring a central gourmet protein, two seasonal signature sides, artisanal accompaniments, and a handcrafted dessert.",
+          details: ["Premium Presentation", "Client Meetings"],
           dietary: []
         }
       ]
     },
     {
       icon: "🍽️",
-      title: "Plated Dinners",
-      description: "Multi-course fine dining for receptions and galas",
+      title: "Executive Plated Dinners",
+      description: "Sophisticated multi-course fine dining for private corporate receptions and galas",
       items: [
         {
-          name: "Three-Course Executive Dinner",
+          name: "Three-Course Premium Dinner",
           price: "$68/person",
-          description: "Seasonal salad, choice of protein entrée with vegetables and starch, and plated dessert. Full service with professional waitstaff.",
-          details: ["Full service", "China & glassware"],
+          description: "Artisanal baby field greens salad, your choice of tenderloin or pan-roasted sea bass with seasonal starch and reduction, followed by a custom plated dessert.",
+          details: ["Full Waitstaff Service", "Premium Tableware"],
           dietary: []
         },
         {
-          name: "Wine-Paired Chef's Tasting",
+          name: "Wine-Paired Chef's Tasting Menu",
           price: "$125/person",
-          description: "Five-course progression with wine pairings, amuse-bouche, and palate cleansers. Our signature experience for high-profile events.",
-          details: ["Sommelier service", "Premium wines"],
+          description: "A signature five-course culinary progression curated by our executive chef, perfectly paired with hand-selected boutique wines.",
+          details: ["Sommelier Service Included", "Boutique Wine Pairings"],
           dietary: []
         }
       ]
@@ -113,46 +119,61 @@ const CorporateCateringMenu = () => {
     const titles: { [key: string]: string } = {
       "V": "Vegetarian",
       "VG": "Vegan",
-      "GF": "Gluten-free options",
-      "NF": "Nut-free available"
+      "GF": "Gluten-Free Options Available"
     };
     return titles[code] || code;
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      <Header />
+
       {/* Hero Section */}
-      <div className="relative h-[50vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80"
-            alt="Corporate Catering"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-        <div className="relative h-full flex items-center justify-center text-center text-white">
+      <div 
+        className="relative flex items-center justify-center text-center overflow-hidden"
+        style={{
+          height: '70vh',
+          marginTop: '80px',
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div 
+          className="relative z-10 transition-all duration-1000 ease-out"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
+          }}
+        >
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl md:text-6xl font-light mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <p className="text-sm tracking-[0.3em] text-[#C4A46A] uppercase font-bold mb-4">
+              Best for: Meetings, quarterly events, client receptions
+            </p>
+            <h1 className="text-4xl md:text-6xl font-light text-white mb-6 animate-fade-in" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
               Corporate Catering
             </h1>
-            <p className="text-xl md:text-2xl font-light opacity-90">
-              Elevated dining experiences for meetings, receptions, and executive events
+            <p className="text-xl md:text-2xl font-light text-white/95 max-w-2xl mx-auto">
+              Sophisticated, elevated culinary experiences designed to make every corporate event exceptional.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Breadcrumb */}
-      <div className="py-5 px-10 text-sm">
-        <Link to="/corporate" className="text-reserved-burgundy hover:underline">
-          ← Back to Corporate Services
+      {/* Breadcrumb - Starts with top margin of 27px as requested */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8" style={{ marginTop: '27px' }}>
+        <Link 
+          to="/menu" 
+          className="inline-flex items-center text-sm font-semibold text-[#5B2E34] hover:text-[#C4A46A] transition-colors hover:underline"
+        >
+          ← BACK TO ALL MENUS
         </Link>
       </div>
 
-      {/* Enhanced 3D Hero Section */}
+      {/* Premium 3D Hero Feature Section (Redesigned to fit brand guidelines) */}
       <motion.section 
-        className="bg-[#0A1128] py-24 px-10 text-white"
+        className="bg-gradient-to-b from-[#F5F5DC]/40 to-[#C9C3BA]/30 py-24 px-6 md:px-8 mt-8 border-y border-[#C9C3BA]/40"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -166,19 +187,23 @@ const CorporateCateringMenu = () => {
               rotateY, 
               transformStyle: "preserve-3d" 
             }}
-            className="relative h-[500px] w-full bg-gradient-to-br from-reserved-burgundy to-black rounded-2xl overflow-hidden shadow-2xl shadow-reserved-burgundy/20"
+            className="relative h-[480px] w-full bg-gradient-to-br from-[#5B2E34] to-[#3a1b20] rounded-2xl overflow-hidden shadow-xl border border-[#C4A46A]/20"
           >
             <img 
               src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" 
-              className="absolute inset-0 w-full h-full object-cover opacity-60" 
+              className="absolute inset-0 w-full h-full object-cover opacity-35" 
               alt="Executive Dining" 
             />
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
+            
+            {/* Elegant flair effect to match site style */}
+            <div className="gold-flair" />
+            
             <div style={{ transform: "translateZ(50px)" }} className="absolute inset-0 flex flex-col justify-end p-12">
-               <h2 className="text-4xl mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-                 Corporate <span className="italic">Excellence</span>
+               <h2 className="text-4xl text-white mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                 Corporate <span className="italic font-light text-[#C4A46A]">Excellence</span>
                </h2>
-               <p className="text-sm tracking-[0.3em] text-brass uppercase">
+               <p className="text-sm tracking-[0.3em] text-[#C4A46A] uppercase font-semibold">
                  Meetings • Receptions • Plated Dinners
                </p>
             </div>
@@ -186,21 +211,21 @@ const CorporateCateringMenu = () => {
 
           <div className="space-y-8">
             {[
-              { title: 'Executive Breakfast', desc: 'Continental spreads, power breakfast buffets, healthy start stations' },
-              { title: 'Boxed Lunches', desc: 'Classic boxed lunches, gourmet salad bowls, executive bento boxes' },
-              { title: 'Plated Dinners', desc: 'Three-course executive dinners, wine-paired chef\'s tastings' }
+              { title: 'Executive Breakfast', desc: 'Curated continental spreads, warm power buffets, and healthy wellness stations to start the day with focus.' },
+              { title: 'Working Luncheons', desc: 'Individually portioned boxed meals, premium customized salads, and elaborate bento trays designed for executive boardrooms.' },
+              { title: 'Bespoke Plated Dinners', desc: 'Multi-course formal dinner services and exclusive tasting experiences curated by our master chefs.' }
             ].map((item, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className="group p-6 border-l border-white/10 hover:border-brass hover:bg-white/5 transition-all cursor-pointer"
+                transition={{ delay: i * 0.15 }}
+                className="group p-6 border-l-2 border-[#C9C3BA] hover:border-[#C4A46A] hover:bg-[#C9C3BA]/15 transition-all cursor-pointer rounded-r-lg"
               >
-                <h4 className="text-xl font-light group-hover:text-brass transition-colors" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h4 className="text-xl font-medium text-[#5B2E34] group-hover:text-[#C4A46A] transition-colors" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
                   {item.title}
                 </h4>
-                <p className="text-gray-400 text-sm mt-2">{item.desc}</p>
+                <p className="text-foreground/80 text-sm mt-2 font-light leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -208,31 +233,31 @@ const CorporateCateringMenu = () => {
       </motion.section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-10 py-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
         {/* Menu Intro */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-light mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Professional Excellence, Every Time
+        <div className="text-center mb-24 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light text-[#5B2E34] mb-6" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+            Professional Dining, Perfectly Executed
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Our corporate catering menu is designed to impress clients, energize teams, and elevate any professional gathering. 
-            From morning coffee service to elegant plated dinners, each offering is crafted with precision and care.
+          <p className="text-lg text-foreground/85 leading-relaxed font-light mb-8">
+            Our corporate catering menus are structured to impress prospective clients, delight valued teams, and elevate professional settings. 
+            Each ingredient is selected for peak freshness, and each platter is styled to provide a premium feast.
           </p>
-          <button className="inline-flex items-center px-10 py-4 bg-reserved-burgundy text-white font-medium tracking-wide hover:bg-reserved-burgundy/90 transition-colors duration-300">
+          <button className="inline-flex items-center px-8 py-4 bg-[#5B2E34] text-[#F5F5DC] font-medium tracking-wider hover:bg-[#5B2E34]/90 transition-all rounded shadow-soft hover:shadow-md uppercase text-sm">
             📥 Download Full PDF Menu
           </button>
         </div>
 
         {/* Menu Categories */}
         {menuCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex} className="mb-20">
-            <div className="flex items-center gap-5 mb-10 pb-5 border-b-2 border-reserved-burgundy">
-              <div className="text-5xl">{category.icon}</div>
+          <div key={categoryIndex} className="mb-24">
+            <div className="flex items-center gap-5 mb-12 pb-5 border-b border-[#C4A46A]/30">
+              <div className="text-4xl">{category.icon}</div>
               <div>
-                <h3 className="text-3xl font-light text-reserved-burgundy mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h3 className="text-2xl md:text-3xl font-light text-[#5B2E34] mb-2" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
                   {category.title}
                 </h3>
-                <p className="text-gray-600 italic">{category.description}</p>
+                <p className="text-foreground/75 italic font-light text-sm">{category.description}</p>
               </div>
             </div>
 
@@ -240,46 +265,50 @@ const CorporateCateringMenu = () => {
               {category.items.map((item, itemIndex) => (
                 <div 
                   key={itemIndex}
-                  className={`bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+                  className="bg-[#FFFDF9] rounded-lg border border-[#C9C3BA]/40 hover:border-[#C4A46A] shadow-soft hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
                 >
-                  <div className="p-8">
-                    <div className="flex justify-between items-start mb-4">
-                      <h4 className="text-xl font-light text-gray-900 flex-1" style={{ fontFamily: 'Playfair Display, serif' }}>
-                        {item.name}
-                      </h4>
-                      <span className="text-lg font-semibold text-reserved-burgundy ml-4 whitespace-nowrap">
-                        {item.price}
-                      </span>
-                    </div>
-                    
-                    <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                      {item.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {item.details.map((detail, detailIndex) => (
-                        <span 
-                          key={detailIndex}
-                          className="text-xs px-3 py-1 bg-gray-100 rounded-full text-gray-600 uppercase tracking-wide"
-                        >
-                          {detail}
+                  <div className="p-8 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-4 gap-4">
+                        <h4 className="text-xl font-normal text-[#5B2E34] leading-tight" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                          {item.name}
+                        </h4>
+                        <span className="text-lg font-semibold text-[#C4A46A] whitespace-nowrap">
+                          {item.price}
                         </span>
-                      ))}
+                      </div>
+                      
+                      <p className="text-foreground/80 leading-relaxed mb-6 text-sm font-light">
+                        {item.description}
+                      </p>
                     </div>
                     
-                    {item.dietary.length > 0 && (
-                      <div className="flex gap-2">
-                        {item.dietary.map((code, dietaryIndex) => (
-                          <div 
-                            key={dietaryIndex}
-                            className="w-6 h-6 bg-reserved-burgundy text-white rounded-full flex items-center justify-center text-xs font-bold"
-                            title={getDietaryTitle(code)}
+                    <div>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {item.details.map((detail, detailIndex) => (
+                          <span 
+                            key={detailIndex}
+                            className="text-xs px-3 py-1 bg-[#C9C3BA]/20 rounded-full text-foreground/80 font-medium tracking-wide"
                           >
-                            {code}
-                          </div>
+                            {detail}
+                          </span>
                         ))}
                       </div>
-                    )}
+                      
+                      {item.dietary.length > 0 && (
+                        <div className="flex gap-2">
+                          {item.dietary.map((code, dietaryIndex) => (
+                            <div 
+                              key={dietaryIndex}
+                              className="w-7 h-7 bg-[#5B2E34] text-[#F5F5DC] rounded-full flex items-center justify-center text-xs font-bold shadow-sm"
+                              title={getDietaryTitle(code)}
+                            >
+                              {code}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -287,27 +316,29 @@ const CorporateCateringMenu = () => {
           </div>
         ))}
 
-        {/* Contact CTA */}
-        <div className="bg-white rounded-xl shadow-lg p-12 text-center mt-16">
-          <h3 className="text-3xl font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Ready to Plan Your Event?
+        {/* Elegant Contact CTA Panel */}
+        <div className="bg-[#FFFDF9] border border-[#C4A46A]/20 rounded-2xl shadow-soft p-12 text-center mt-16 max-w-4xl mx-auto">
+          <h3 className="text-3xl font-light text-[#5B2E34] mb-4" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+            Ready to Plan Your Occasion?
           </h3>
-          <p className="text-lg text-gray-600 mb-8">
-            Let's discuss how we can create the perfect menu for your corporate gathering
+          <p className="text-lg text-foreground/80 mb-8 font-light max-w-2xl mx-auto">
+            Contact us today to discuss how we can compose the perfect curated menu for your corporate reception or event.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               to="/book-event"
-              className="inline-flex items-center justify-center px-8 py-4 bg-reserved-burgundy text-white font-medium tracking-wide hover:bg-reserved-burgundy/90 transition-colors duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#5B2E34] text-[#F5F5DC] font-medium tracking-wider hover:bg-[#5B2E34]/90 transition-all rounded shadow-soft uppercase text-sm"
             >
-              Request a Quote
+              Request a Proposal
             </Link>
-            <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-reserved-burgundy text-reserved-burgundy font-medium tracking-wide hover:bg-reserved-burgundy hover:text-white transition-colors duration-300">
-              Schedule Tasting
+            <button className="inline-flex items-center justify-center px-8 py-4 border border-[#5B2E34] text-[#5B2E34] hover:bg-[#5B2E34] hover:text-white transition-all rounded uppercase text-sm font-medium">
+              Schedule Consultation
             </button>
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
