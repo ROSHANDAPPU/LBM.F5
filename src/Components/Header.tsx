@@ -41,7 +41,7 @@ const Header = () => {
         position: isScrolled ? 'fixed' : 'absolute'
       }}
     >
-      <nav className="container mx-auto px-8">
+      <nav className="container mx-auto px-4 md:px-8 relative">
         <div className={`flex items-center justify-between transition-all duration-300 ease-in-out ${
           isScrolled ? 'h-20' : 'h-28'
         }`}>
@@ -70,21 +70,24 @@ const Header = () => {
           </div>
 
           {/* Center logo */}
-          <div className="flex-shrink-0 logo-center">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:left-auto md:top-auto md:translate-x-0 md:translate-y-0 flex-shrink-0 logo-center">
             <Link to="/">
               <img
                 src={logoTransparent}
                 alt="Charcuterie Chic DFW"
-                className={`transition-all duration-300 ease-in-out hover:opacity-80 h-80 w-auto`}
+                className={`transition-all duration-300 ease-in-out hover:opacity-80 w-auto ${
+                  isScrolled
+                    ? 'h-16 md:h-80 max-h-[64px] md:max-h-[232px]'
+                    : 'h-24 md:h-80 max-h-[96px] md:max-h-[256px]'
+                }`}
                 style={{
-                  objectFit: 'contain',
-                  maxHeight: isScrolled ? '232px' : '256px'
+                  objectFit: 'contain'
                 }}
               />
             </Link>
           </div>
 
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-center">
             {/* Right navigation */}
             <div className="hidden md:flex items-center space-x-8 nav-right">
               <Link to="/menu" className={`text-sm font-medium transition-all nav-link hover:text-brass hover:underline hover:underline-offset-4 hover:decoration-brass ${isScrolled ? 'text-foreground' : 'text-reserved-burgundy'}`}>

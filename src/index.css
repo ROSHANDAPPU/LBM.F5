@@ -395,8 +395,14 @@ All colors MUST be HSL.
   }
 
   .logo-center {
-    flex: 0 0 auto;
-    margin: 0 2rem;
+    margin: 0 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .logo-center {
+      flex: 0 0 auto;
+      margin: 0 2rem;
+    }
   }
 
   .nav-link {
