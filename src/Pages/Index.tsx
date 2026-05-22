@@ -148,7 +148,7 @@ const Index = () => {
 
       <section
         className={`relative bg-center bg-cover bg-no-repeat text-white text-center py-28 ${isMobile ? 'bg-scroll' : 'bg-fixed'}`}
-        style={{ backgroundImage: `url('https://gcmais.com.br/wp-content/uploads/2022/12/produtos-das-ceias-de-natal-e-reveillon-podem-variar-ate-281-em-fortaleza.jpeg')` }}
+        style={{ backgroundImage: `url('${(import.meta as any).env?.BASE_URL || "/"}whats-included-hero.jpg')` }}
       >
         <div className="absolute inset-0 bg-black/55"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
