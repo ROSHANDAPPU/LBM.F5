@@ -3,19 +3,48 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
+import { useIsMobile } from "@/Hooks/use-mobile";
 
 const CulturalGlobalMenu = () => {
   const [heroVisible, setHeroVisible] = useState(false);
+  const isMobile = useIsMobile();
   const targetRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
-  // Moves the content horizontally based on vertical scroll
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-  // Individual parallax for images to create 3D depth
-  const imgX = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  // Calculate dynamic scroll distance to prevent trailing empty spaces or clippings on desktop resize
+  useEffect(() => {
+    if (isMobile) return;
+    
+    const handleResize = () => {
+      if (containerRef.current) {
+        setScrollWidth(containerRef.current.scrollWidth);
+      }
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    // Timeout to make sure the DOM elements have settled and rendered completely
+    const timer = setTimeout(handleResize, 600);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer);
+    };
+  }, [isMobile]);
+
+  // Translate horizontal block precisely by the overflow width (adding beautiful extra padding at the end)
+  const scrollDistance = Math.max(0, scrollWidth - viewportWidth + 120);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+  const imgX = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
   useEffect(() => {
     setHeroVisible(true);
@@ -116,125 +145,192 @@ const CulturalGlobalMenu = () => {
         </Link>
       </div>
 
-      {/* Storytelling Scroll Section */}
-      <section ref={targetRef} className="relative h-[280vh] bg-gradient-to-b from-background via-[#C9C3BA]/10 to-background border-b border-[#C9C3BA]/30 overflow-hidden">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-20 px-6 md:px-16 items-center">
+      {/* Interactive Storytelling Section (Responsive implementation) */}
+      {isMobile ? (
+        /* Native, comfortable vertical layout for mobile touchscreens */
+        <section className="py-20 px-6 bg-gradient-to-b from-background via-[#C9C3BA]/10 to-background border-b border-[#C9C3BA]/30 space-y-16">
+          <div className="flex flex-col justify-center max-w-xl mx-auto text-center">
+            <span className="text-xs tracking-[0.4em] text-[#5B2E34] uppercase mb-4 font-bold">
+              A Passport of Flavors
+            </span>
+            <h2 className="text-4xl text-[#5B2E34] mb-6" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+              Cultural & <span className="italic font-light text-[#C4A46A]">Global</span>
+            </h2>
+            <p className="text-foreground/80 leading-relaxed font-light text-sm">
+              From the bustling culinary street markets of Asia to the olive-rich coastal villages 
+              of the Mediterranean, we translate time-honored heritage recipes into luxury, five-star catering encounters.
+            </p>
             
-            {/* Introductory Story Panel */}
-            <div className="flex h-[520px] w-[460px] flex-col justify-center shrink-0 pr-6">
-              <span className="text-xs tracking-[0.4em] text-[#5B2E34] uppercase mb-4 font-bold">
-                A Passport of Flavors
-              </span>
-              <h2 className="text-5xl md:text-6xl leading-tight text-[#5B2E34]" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
-                Cultural & <br />
-                <span className="italic font-light text-[#C4A46A]">Global</span>
-              </h2>
-              <p className="text-foreground/80 mt-6 leading-relaxed font-light text-sm">
-                From the bustling culinary street markets of Asia to the olive-rich coastal villages 
-                of the Mediterranean, we translate time-honored heritage recipes into luxury, five-star catering encounters.
-              </p>
-              
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-2.5 h-2.5 bg-[#5B2E34] rounded-full"></div>
-                  <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Heritage Culinary Recipes</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-2.5 h-2.5 bg-[#C4A46A] rounded-full"></div>
-                  <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Immersive Storytelling Elements</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-2.5 h-2.5 bg-[#C9C3BA] rounded-full"></div>
-                  <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Artisanal Sourcing & Styling</span>
-                </div>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 bg-[#5B2E34] rounded-full"></div>
+                <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Heritage Culinary Recipes</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 bg-[#C4A46A] rounded-full"></div>
+                <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Immersive Storytelling Elements</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 bg-[#C9C3BA] rounded-full"></div>
+                <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Artisanal Sourcing & Styling</span>
               </div>
             </div>
+          </div>
 
-            {/* Menu Categories with Parallax Cards */}
+          <div className="space-y-12 max-w-md mx-auto">
             {menuCategories.map((category, index) => (
-              <div 
-                key={index}
-                className={`relative h-[500px] w-[380px] shrink-0 group ${
-                  index === 1 ? 'pt-8' : ''
-                }`}
-              >
-                <motion.div 
-                  style={{ x: imgX }} 
-                  className="h-3/4 w-full overflow-hidden rounded-lg shadow-soft border border-[#C9C3BA]/40"
-                >
+              <div key={index} className="relative group border border-[#C9C3BA]/40 rounded-xl overflow-hidden shadow-soft bg-[#FFFDF9]">
+                <div className="h-56 w-full overflow-hidden border-b border-[#C9C3BA]/30">
                   <img 
                     src={category.image} 
-                    className="h-full w-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" 
+                    className="h-full w-full object-cover filter brightness-[0.85] group-hover:brightness-100 transition-all duration-500" 
                     alt={category.title}
                   />
-                </motion.div>
-                
-                {/* Dynamic Panel Positioning aligned to branding */}
-                {category.panelPosition === 'bottom' && (
-                  <div className={`absolute bottom-4 left-4 p-6 shadow-md rounded-lg max-w-[320px] ${category.panelBg}`}>
-                    <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
-                      {category.title}
-                    </h3>
-                    <p className="text-[10px] tracking-widest text-[#5B2E34] mt-1 font-semibold uppercase">
-                      {category.subtitle}
-                    </p>
-                    <div className="mt-4 space-y-1">
-                      {category.items.slice(0, 3).map((item, itemIndex) => (
-                        <div key={itemIndex} className="text-xs text-foreground/80 flex items-center gap-2">
-                          <span className="w-1 h-1 bg-[#5B2E34] rounded-full"></span>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl text-[#5B2E34] mb-1" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                    {category.title}
+                  </h3>
+                  <p className="text-[10px] tracking-widest text-[#C4A46A] font-semibold uppercase mb-4">
+                    {category.subtitle}
+                  </p>
+                  <p className="text-foreground/80 leading-relaxed font-light text-xs mb-6">
+                    {category.description}
+                  </p>
+                  <div className="space-y-2 border-t border-[#C9C3BA]/20 pt-4">
+                    {category.items.map((item, itemIndex) => (
+                      <div key={itemIndex} className="text-xs text-foreground/80 flex items-center gap-2 font-light">
+                        <span className="w-1.5 h-1.5 bg-[#C4A46A] rounded-full"></span>
+                        {item}
+                      </div>
+                    ))}
                   </div>
-                )}
-                
-                {category.panelPosition === 'top' && (
-                  <div className={`absolute top-4 right-4 p-6 shadow-md rounded-lg max-w-[320px] z-10 ${category.panelBg}`}>
-                    <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
-                      {category.title}
-                    </h3>
-                    <p className="text-[10px] tracking-widest text-[#C4A46A] mt-1 font-semibold uppercase">
-                      {category.subtitle}
-                    </p>
-                    <div className="mt-4 space-y-1">
-                      {category.items.slice(0, 3).map((item, itemIndex) => (
-                        <div key={itemIndex} className="text-xs text-white/90 flex items-center gap-2">
-                          <span className="w-1 h-1 bg-[#C4A46A] rounded-full"></span>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                
-                {category.panelPosition === 'center' && (
-                  <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 p-6 shadow-md rounded-lg w-[280px] text-center ${category.panelBg}`}>
-                    <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
-                      {category.title}
-                    </h3>
-                    <p className="text-[10px] tracking-widest text-[#5B2E34] mt-1 font-bold uppercase">
-                      {category.subtitle}
-                    </p>
-                    <div className="mt-4 space-y-1">
-                      {category.items.slice(0, 3).map((item, itemIndex) => (
-                        <div key={itemIndex} className="text-xs text-[#5B2E34]/90 flex items-center justify-center gap-2">
-                          <span className="w-1 h-1 bg-[#5B2E34] rounded-full"></span>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             ))}
+          </div>
+        </section>
+      ) : (
+        /* Smooth horizontal mouse/scroll track for desktop screen sizes */
+        <section ref={targetRef} className="relative h-[250vh] bg-gradient-to-b from-background via-[#C9C3BA]/10 to-background border-b border-[#C9C3BA]/30 overflow-visible mt-8">
+          <div className="sticky top-0 flex h-screen items-center overflow-hidden pt-20">
+            <motion.div style={{ x }} ref={containerRef} className="flex gap-20 px-16 items-center">
+              
+              {/* Introductory Story Panel */}
+              <div className="flex h-[480px] w-[460px] flex-col justify-center shrink-0 pr-6">
+                <span className="text-xs tracking-[0.4em] text-[#5B2E34] uppercase mb-4 font-bold">
+                  A Passport of Flavors
+                </span>
+                <h2 className="text-5xl leading-tight text-[#5B2E34]" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                  Cultural & <br />
+                  <span className="italic font-light text-[#C4A46A]">Global</span>
+                </h2>
+                <p className="text-foreground/80 mt-6 leading-relaxed font-light text-sm">
+                  From the bustling culinary street markets of Asia to the olive-rich coastal villages 
+                  of the Mediterranean, we translate time-honored heritage recipes into luxury, five-star catering encounters.
+                </p>
+                
+                <div className="mt-8 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-2.5 h-2.5 bg-[#5B2E34] rounded-full"></div>
+                    <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Heritage Culinary Recipes</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-2.5 h-2.5 bg-[#C4A46A] rounded-full"></div>
+                    <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Immersive Storytelling Elements</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-2.5 h-2.5 bg-[#C9C3BA] rounded-full"></div>
+                    <span className="text-xs font-semibold tracking-wider text-foreground/75 uppercase">Artisanal Sourcing & Styling</span>
+                  </div>
+                </div>
+              </div>
 
-          </motion.div>
-        </div>
-      </section>
+              {/* Menu Categories with Parallax Cards */}
+              {menuCategories.map((category, index) => (
+                <div 
+                  key={index}
+                  className={`relative h-[480px] w-[360px] shrink-0 group ${
+                    index === 1 ? 'pt-8' : ''
+                  }`}
+                >
+                  <motion.div 
+                    style={{ x: imgX }} 
+                    className="h-3/4 w-full overflow-hidden rounded-lg shadow-soft border border-[#C9C3BA]/40"
+                  >
+                    <img 
+                      src={category.image} 
+                      className="h-full w-full object-cover filter brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" 
+                      alt={category.title}
+                    />
+                  </motion.div>
+                  
+                  {/* Dynamic Panel Positioning */}
+                  {category.panelPosition === 'bottom' && (
+                    <div className={`absolute bottom-4 left-4 p-6 shadow-md rounded-lg max-w-[320px] ${category.panelBg}`}>
+                      <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                        {category.title}
+                      </h3>
+                      <p className="text-[10px] tracking-widest text-[#5B2E34] mt-1 font-semibold uppercase">
+                        {category.subtitle}
+                      </p>
+                      <div className="mt-4 space-y-1">
+                        {category.items.slice(0, 3).map((item, itemIndex) => (
+                          <div key={itemIndex} className="text-xs text-foreground/80 flex items-center gap-2">
+                            <span className="w-1 h-1 bg-[#5B2E34] rounded-full"></span>
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {category.panelPosition === 'top' && (
+                    <div className={`absolute top-4 right-4 p-6 shadow-md rounded-lg max-w-[320px] z-10 ${category.panelBg}`}>
+                      <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                        {category.title}
+                      </h3>
+                      <p className="text-[10px] tracking-widest text-[#C4A46A] mt-1 font-semibold uppercase">
+                        {category.subtitle}
+                      </p>
+                      <div className="mt-4 space-y-1">
+                        {category.items.slice(0, 3).map((item, itemIndex) => (
+                          <div key={itemIndex} className="text-xs text-white/90 flex items-center gap-2">
+                            <span className="w-1 h-1 bg-[#C4A46A] rounded-full"></span>
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {category.panelPosition === 'center' && (
+                    <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 p-6 shadow-md rounded-lg w-[280px] text-center ${category.panelBg}`}>
+                      <h3 className="text-2xl" style={{ fontFamily: 'Libre Baskerville, Georgia, serif' }}>
+                        {category.title}
+                      </h3>
+                      <p className="text-[10px] tracking-widest text-[#5B2E34] mt-1 font-bold uppercase">
+                        {category.subtitle}
+                      </p>
+                      <div className="mt-4 space-y-1">
+                        {category.items.slice(0, 3).map((item, itemIndex) => (
+                          <div key={itemIndex} className="text-xs text-[#5B2E34]/90 flex items-center justify-center gap-2">
+                            <span className="w-1 h-1 bg-[#5B2E34] rounded-full"></span>
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
 
-      {/* Flavor Profile Section (Redesigned with brand color palette) */}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Flavor Profile Section */}
       <section className="py-24 px-6 md:px-8 bg-[#FFFDF9]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
