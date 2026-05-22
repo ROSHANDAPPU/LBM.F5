@@ -1,4 +1,5 @@
 import { useFadeInUp } from '@/Hooks/useScrollAnimation';
+import logoTransparent from '@/assets/BLUE_TEXT_TRANSPARENT_BACKGROUND.png';
 
 const Footer = () => {
   const { elementRef, isVisible } = useFadeInUp();
@@ -11,9 +12,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div className="space-y-3">
             <img
-              src="/LBM.F5/WIDE_ASPECTRATIO_BLACK.png"
-              alt="La Bella Mesa Logo"
-              className="h-12 w-auto"
+              src={logoTransparent}
+              alt="Charcuterie Chic DFW Logo"
+              className="h-48 w-auto"
             />
           </div>
           
@@ -39,7 +40,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-border/30 text-center">
-          <p className="text-xs text-muted-foreground font-light">&copy; {new Date().getFullYear()} La Bella Mesa. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground font-light">&copy; {new Date().getFullYear()} Charcuterie Chic DFW. All rights reserved.</p>
         </div>
       </div>
     </footer>

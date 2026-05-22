@@ -14,7 +14,7 @@ if (sessionStorage.redirect) {
 }
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/LBM.F5/">
+  <BrowserRouter basename="/charcuterie-chic-dfw/">
     <App />
   </BrowserRouter>
 );

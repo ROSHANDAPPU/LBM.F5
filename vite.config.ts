@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/LBM.F5/", // MUST match your repo name
+  base: "/charcuterie-chic-dfw/", // Updated base path
   build: {
     outDir: "dist",
   },

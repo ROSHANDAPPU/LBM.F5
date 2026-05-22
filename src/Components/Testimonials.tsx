@@ -4,7 +4,7 @@ import { useFadeInUp } from '@/Hooks/useScrollAnimation';
 const testimonialsData = [
   {
     year: '2024',
-    quote: '"La Bella Mesa transformed our corporate event into an unforgettable experience. The private cooking class was exceptional, with every dish bursting with flavor and presented beautifully. Our team left feeling inspired and well-fed!"',
+    quote: '"Charcuterie Chic DFW transformed our corporate event into an unforgettable experience. The private cooking class was exceptional, with every dish bursting with flavor and presented beautifully. Our team left feeling inspired and well-fed!"',
     author: '– Sarah Johnson, Dallas Museum of Art',
     color: 'text-reserved-burgundy',
   },
@@ -16,7 +16,7 @@ const testimonialsData = [
   },
   {
     year: '2024',
-    quote: '"Our engagement dinner was magical. The culinary expertise shone through in every course. La Bella Mesa made our special moment even more memorable with their exquisite flavors and impeccable presentation."',
+    quote: '"Our engagement dinner was magical. The culinary expertise shone through in every course. Charcuterie Chic DFW made our special moment even more memorable with their exquisite flavors and impeccable presentation."',
     author: '– Emily Rodriguez, St. Mark\'s Preparatory School',
     color: 'text-reserved-burgundy',
   },
@@ -28,7 +28,7 @@ const testimonialsData = [
   },
   {
     year: '2023',
-    quote: '"La Bella Mesa\'s private cooking class was an amazing experience. Learned so much and enjoyed the process. The food was phenomenal, and the instructor was knowledgeable and engaging."',
+    quote: '"Charcuterie Chic DFW\'s private cooking class was an amazing experience. Learned so much and enjoyed the process. The food was phenomenal, and the instructor was knowledgeable and engaging."',
     author: '– Lisa Thompson, Dallas Zoo',
     color: 'text-reserved-burgundy',
   },
@@ -40,25 +40,25 @@ const testimonialsData = [
   },
   {
     year: '2024',
-    quote: '"Our wedding day was made extraordinary by La Bella Mesa. The food was not just delicious but also a work of art. The service was impeccable, and our photographer captured every beautiful detail."',
+    quote: '"Our wedding day was made extraordinary by Charcuterie Chic DFW. The food was not just delicious but also a work of art. The service was impeccable, and our photographer captured every beautiful detail."',
     author: '– Anna Martinez, Latina Social Club DFW',
     color: 'text-reserved-burgundy',
   },
   {
     year: '2024',
-    quote: '"The private cooking classes have been a game-changer for our community events. Engaging, educational, and utterly delicious. La Bella Mesa brings joy to every gathering."',
+    quote: '"The private cooking classes have been a game-changer for our community events. Engaging, educational, and utterly delicious. Charcuterie Chic DFW brings joy to every gathering."',
     author: '– James Wilson, 4dwn Nonprofit',
     color: 'text-reserved-burgundy',
   },
   {
     year: '2023',
-    quote: '"Engagement celebrations deserve the best, and La Bella Mesa delivers. The intimate setting, combined with their culinary mastery, made our announcement dinner one for the books."',
+    quote: '"Engagement celebrations deserve the best, and Charcuterie Chic DFW delivers. The intimate setting, combined with their culinary mastery, made our announcement dinner one for the books."',
     author: '– Maria Gonzalez, Lamplighter School',
     color: 'text-reserved-burgundy',
   },
   {
     year: '2024',
-    quote: '"As a podcast host, I know good food, and La Bella Mesa\'s catering for our recording sessions was top-notch. Fresh, flavorful, and perfectly timed. A true partner in our success."',
+    quote: '"As a podcast host, I know good food, and Charcuterie Chic DFW\'s catering for our recording sessions was top-notch. Fresh, flavorful, and perfectly timed. A true partner in our success."',
     author: '– Carlos Ramirez, The Global Latin Factor Podcast',
     color: 'text-reserved-burgundy',
   },

@@ -50,7 +50,7 @@ const Gallery = () => {
         title="Loved the look? Let's design yours."
         primaryButtonText="Request a Proposal"
         primaryButtonLink="/book-event"
-        imageUrl="/LBM.F5/IMG_6473-scaled.jpeg"
+        imageUrl="/charcuterie-chic-dfw/IMG_6473-scaled.jpeg"
       />
       <Footer />
     </div>

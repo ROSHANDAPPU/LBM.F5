@@ -25,7 +25,7 @@ const SpecialOccasions = () => {
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-light mb-8">Unforgettable Celebrations</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            La Bella Mesa specializes in crafting bespoke culinary experiences for all of life's special moments. From intimate anniversaries to grand birthday celebrations, we bring elegance and exceptional taste to your event. Our dedicated team works closely with you to design a personalized menu and ensure every detail is flawlessly executed, allowing you to savor every moment with your guests.
+            Charcuterie Chic DFW specializes in crafting bespoke culinary experiences for all of life's special moments. From intimate anniversaries to grand birthday celebrations, we bring elegance and exceptional taste to your event. Our dedicated team works closely with you to design a personalized menu and ensure every detail is flawlessly executed, allowing you to savor every moment with your guests.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Whether it's a milestone birthday, a cherished anniversary, a festive holiday gathering, or any other significant occasion, we provide tailored solutions that reflect your unique style and preferences. Let us transform your vision into a memorable reality with exquisite food and impeccable service.

@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import logoTransparent from '@/assets/BLUE_TEXT_TRANSPARENT_BACKGROUND.png';
+import logoCrema from '@/assets/BLUE_TEXT_CREMA_BACKGROUND.png';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -71,16 +73,12 @@ const Header = () => {
           <div className="flex-shrink-0 logo-center">
             <Link to="/">
               <img
-                src={isScrolled ? "/LBM.F5/SQUARE_TRANSPARENT_INK_NAVY.png" : "/LBM.F5/WIDE_ASPECTRATIO_NO_BACKGROUND_INK_NAVY.png"}
-                alt="La Bella Mesa"
-                className={`transition-all duration-300 ease-in-out hover:opacity-80 ${
-                  isScrolled
-                    ? 'w-[58px] h-auto'
-                    : 'h-16 w-auto min-w-[120px]'
-                }`}
+                src={logoTransparent}
+                alt="Charcuterie Chic DFW"
+                className={`transition-all duration-300 ease-in-out hover:opacity-80 h-80 w-auto`}
                 style={{
                   objectFit: 'contain',
-                  maxHeight: isScrolled ? '58px' : '64px'
+                  maxHeight: isScrolled ? '232px' : '256px'
                 }}
               />
             </Link>

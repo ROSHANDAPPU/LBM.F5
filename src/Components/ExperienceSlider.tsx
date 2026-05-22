@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ExperienceSlider.css'; // Import the CSS file
 import { FadeImage } from './UI/FadeImage';
+import logoTransparent from '@/assets/BLUE_TEXT_TRANSPARENT_BACKGROUND.png';
+import logoCrema from '@/assets/BLUE_TEXT_CREMA_BACKGROUND.png';
 
 const ExperienceSlider: React.FC = () => {
   const [activeItem, setActiveItem] = useState('events');
@@ -57,7 +59,7 @@ const ExperienceSlider: React.FC = () => {
         {/* Right Column */}
         <div className="experience-right">
           <div className={`slide ${activeItem === 'events' ? 'active' : ''}`} id="events">
-            <FadeImage src="/logo-square.png" alt="Events" />
+            <FadeImage src={logoTransparent} alt="Events" />
             <div className="overlay">
               <h3>Meet the Team</h3>
               <p>Discover more about our brilliant and experienced team of professional event planners, chefs, and managers.</p>
@@ -65,7 +67,7 @@ const ExperienceSlider: React.FC = () => {
           </div>
 
           <div className={`slide ${activeItem === 'weddings' ? 'active' : ''}`} id="weddings">
-            <FadeImage src="/logo-wide.png" alt="Weddings" />
+            <FadeImage src={logoCrema} alt="Weddings" />
             <div className="overlay">
               <h3>Beautifully Thoughtful Weddings</h3>
               <p>Making your day unforgettable with care and style.</p>
