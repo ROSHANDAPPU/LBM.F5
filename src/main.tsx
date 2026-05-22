@@ -6,15 +6,20 @@ import "./fonts.css";
 
 // Restore the intended URL after redirect
 if (sessionStorage.redirect) {
-  const redirectUrl = new URL(sessionStorage.redirect);
-  sessionStorage.removeItem('redirect');
-  if (redirectUrl.pathname !== window.location.pathname) {
-    window.history.replaceState(null, '', redirectUrl.pathname);
+  try {
+    const redirectUrl = new URL(sessionStorage.redirect);
+    sessionStorage.removeItem('redirect');
+    if (redirectUrl.pathname !== window.location.pathname) {
+      window.history.replaceState(null, '', redirectUrl.pathname);
+    }
+  } catch (e) {
+    console.error("Error restoring redirected URL:", e);
+    sessionStorage.removeItem('redirect');
   }
 }
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/charcuterie-chic-dfw/">
+  <BrowserRouter basename="/LBM.F5">
     <App />
   </BrowserRouter>
 );

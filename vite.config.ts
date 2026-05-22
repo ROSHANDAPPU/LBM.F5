@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/charcuterie-chic-dfw/", // Updated base path
+  base: "/LBM.F5/", // Updated base path for GitHub Pages
   build: {
     outDir: "dist",
   },
